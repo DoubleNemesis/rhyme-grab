@@ -19,6 +19,7 @@ function createGrid(){
         const square = document.createElement('div')
         square.classList.add('square')
         grid.appendChild(square)
+        square.innerText = ''
         squares.push(square)
     }
     populateGrid()   
@@ -34,7 +35,12 @@ function populateGrid(){
 }
 
 function start(){
-    squares[40].innerText = squares[45].innerText
-    squares[45].innerText = ''
+//iterate over squares and - noOfWords
+for (let i = 0; i < noOfSquares; i++ ){
+    if(i< noOfSquares - noOfWords){
+        squares[i].innerText = squares[i+5].innerText
+        squares[i+5].innerText = ''
+    }
+}
 }
 
