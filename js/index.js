@@ -36,11 +36,16 @@ function populateGrid(){
 
 function start(){
 //iterate over squares and - noOfWords
-for (let i = 0; i < noOfSquares; i++ ){
-    if(i< noOfSquares - noOfWords){
-        squares[i].innerText = squares[i+5].innerText
-        squares[i+5].innerText = ''
+setInterval(()=>{
+    for (let i = 0; i < noOfSquares; i++ ){
+        if(i< noOfSquares - noOfWords){
+            squares[i].innerText = squares[i+5].innerText
+            if (squares[i].innerText.length > 1){
+            }
+            squares[i+5].innerText = ''
+        }
     }
-}
+},500)
+
 }
 
