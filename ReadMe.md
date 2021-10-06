@@ -22,3 +22,6 @@ Logic:
     setinterval for the word to drop through grid
     basic L/R control as per pacman
     when reaches bottom, assess if fallingWord.target is the same as target reached.
+
+To Do:
+    add LR control
