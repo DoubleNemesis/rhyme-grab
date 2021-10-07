@@ -1,8 +1,3 @@
-// words move randomly and exit box
-// click word to select, click rhyming partner to score point
-// needs a grid
-// needs classes
-
 //set up some variables
 const noOfSquares = 50
 const gridWidth = 5
@@ -27,7 +22,7 @@ function createGrid() {
     }
     populateGrid()
 }
-createGrid()
+createGrid() 
 
 function populateGrid() {
     let j = 0
