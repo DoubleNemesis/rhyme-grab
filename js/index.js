@@ -22,8 +22,9 @@ function createGrid() {
     }
     populateGrid()
 }
-createGrid() 
+createGrid()
 
+//populate the grid
 function populateGrid() {
     let j = 0
     for (let i = noOfSquares - gridWidth; i < noOfSquares; i++) {
@@ -36,19 +37,61 @@ function populateGrid() {
     activeWordCurrentPos = ranNum
 }
 
+//start the game
 function start() {
     //iterate over squares and - gridWidth
     const activeWordTimer = setInterval(() => {
-        if (activeWordCurrentPos < noOfSquares-gridWidth) {
+        if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
             console.log(activeWordCurrentPos);
             squares[activeWordCurrentPos].innerText = ""
-            squares[activeWordCurrentPos].classList.add('active')
+            squares[activeWordCurrentPos].classList.remove('active')
             squares[activeWordCurrentPos + gridWidth].innerText = word[0]
             squares[activeWordCurrentPos + gridWidth].classList.add('active')
             activeWordCurrentPos += gridWidth
         }
-
     }, 500)
-
 }
 
+//set up eventListeners for controls
+document.addEventListener('keydown', assignMoveKeys) //desktop only
+
+let buttonLeft = document.getElementById('left')
+let buttonRight = document.getElementById('right')
+buttonLeft.addEventListener('click', assignMoveMobile)
+buttonRight.addEventListener('click', assignMoveMobile)
+
+function assignMoveKeys(e) {
+    const keyCode = e.keyCode
+    controlWord(keyCode)
+}
+
+function assignMoveMobile(e) {
+    const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
+    controlWord(keyCode)
+}
+
+// control falling word
+function controlWord(keyCode) {
+
+    switch (keyCode) {
+        case 37:
+            squares[activeWordCurrentPos].classList.remove('active')
+            squares[activeWordCurrentPos].innerText = ''
+            squares[activeWordCurrentPos - 1].innerText = word[0]
+            squares[activeWordCurrentPos - 1].classList.add('active')
+            activeWordCurrentPos -= 1
+            break
+        case 39:
+            squares[activeWordCurrentPos].classList.remove('active')
+            squares[activeWordCurrentPos].innerText = ''
+            squares[activeWordCurrentPos + 1].innerText = word[0]
+            squares[activeWordCurrentPos + 1].classList.add('active')
+            activeWordCurrentPos += 1
+            break
+    }
+
+    
+    
+}
+
+// set if move is legal
