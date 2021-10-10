@@ -42,7 +42,6 @@ function start() {
     //iterate over squares and - gridWidth
     const activeWordTimer = setInterval(() => {
         if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
-            console.log(activeWordCurrentPos);
             squares[activeWordCurrentPos].innerText = ""
             squares[activeWordCurrentPos].classList.remove('active')
             squares[activeWordCurrentPos + gridWidth].innerText = word[0]
@@ -75,23 +74,26 @@ function controlWord(keyCode) {
 
     switch (keyCode) {
         case 37:
-            squares[activeWordCurrentPos].classList.remove('active')
-            squares[activeWordCurrentPos].innerText = ''
-            squares[activeWordCurrentPos - 1].innerText = word[0]
-            squares[activeWordCurrentPos - 1].classList.add('active')
-            activeWordCurrentPos -= 1
+            if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0) {
+                squares[activeWordCurrentPos].classList.remove('active')
+                squares[activeWordCurrentPos].innerText = ''
+                squares[activeWordCurrentPos - 1].innerText = word[0]
+                squares[activeWordCurrentPos - 1].classList.add('active')
+                activeWordCurrentPos -= 1
+            }
             break
         case 39:
-            squares[activeWordCurrentPos].classList.remove('active')
-            squares[activeWordCurrentPos].innerText = ''
-            squares[activeWordCurrentPos + 1].innerText = word[0]
-            squares[activeWordCurrentPos + 1].classList.add('active')
-            activeWordCurrentPos += 1
+            if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0) {
+                squares[activeWordCurrentPos].classList.remove('active')
+                squares[activeWordCurrentPos].innerText = ''
+                squares[activeWordCurrentPos + 1].innerText = word[0]
+                squares[activeWordCurrentPos + 1].classList.add('active')
+                activeWordCurrentPos += 1
+            }
             break
     }
 
-    
-    
+
+
 }
 
-// set if move is legal
