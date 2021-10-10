@@ -4,6 +4,7 @@ const gridWidth = 5
 const gridSquareSize = 50
 let squares = []
 let activeWordCurrentPos = 0
+let tileISActive = false
 const word = ['thorough']
 const targetWords = ['cough', 'rough', 'through', 'though', 'burrough']
 
@@ -40,6 +41,7 @@ function populateGrid() {
 //start the game
 function start() {
     //iterate over squares and - gridWidth
+    tileISActive = true
     const activeWordTimer = setInterval(() => {
         if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
             squares[activeWordCurrentPos].innerText = ""
@@ -72,9 +74,15 @@ function assignMoveMobile(e) {
 // control falling word
 function controlWord(keyCode) {
 
+    if (activeWordCurrentPos > noOfSquares -11){
+        setTimeout(()=>{
+            tileISActive = false
+        },300)
+    }
+
     switch (keyCode) {
         case 37:
-            if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0) {
+            if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0 && tileISActive) {
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos - 1].innerText = word[0]
@@ -83,7 +91,7 @@ function controlWord(keyCode) {
             }
             break
         case 39:
-            if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0) {
+            if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos + 1].innerText = word[0]
