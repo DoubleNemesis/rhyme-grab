@@ -5,12 +5,14 @@ const gridSquareSize = 50
 let squares = []
 let activeWordCurrentPos = 0
 let tileISActive = false
-const word = ['thorough']
+const wordsToPlay = ['thorough', 'burrough']
 const targetWords = ['cough', 'rough', 'through', 'though', 'burrough']
-
+let points = 0
 
 //grab the grid div
 const grid = document.getElementsByClassName('grid')[0]
+const messageDisplay = document.getElementsByClassName('message')[0]
+const pointsDisplay = document.getElementsByClassName('points')[0]
 
 //create the grid
 function createGrid() {
@@ -21,6 +23,7 @@ function createGrid() {
         square.innerText = ''
         squares.push(square)
     }
+    pointsDisplay.innerText = points
     populateGrid()
 }
 createGrid()
@@ -33,7 +36,7 @@ function populateGrid() {
         j++
     }
     const ranNum = Math.floor(Math.random() * 5)
-    squares[ranNum].innerText = word[0]
+    squares[ranNum].innerText = wordsToPlay[0]
     squares[ranNum].classList.add('active')
     activeWordCurrentPos = ranNum
 }
@@ -46,9 +49,14 @@ function start() {
         if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
             squares[activeWordCurrentPos].innerText = ""
             squares[activeWordCurrentPos].classList.remove('active')
-            squares[activeWordCurrentPos + gridWidth].innerText = word[0]
+            squares[activeWordCurrentPos + gridWidth].innerText = wordsToPlay[0]
             squares[activeWordCurrentPos + gridWidth].classList.add('active')
             activeWordCurrentPos += gridWidth
+        }
+        else{
+            clearInterval(activeWordTimer)
+            tileISActive = false
+            calculatePoints()
         }
     }, 500)
 }
@@ -85,7 +93,7 @@ function controlWord(keyCode) {
             if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0 && tileISActive) {
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
-                squares[activeWordCurrentPos - 1].innerText = word[0]
+                squares[activeWordCurrentPos - 1].innerText = wordsToPlay[0]
                 squares[activeWordCurrentPos - 1].classList.add('active')
                 activeWordCurrentPos -= 1
             }
@@ -94,14 +102,24 @@ function controlWord(keyCode) {
             if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
-                squares[activeWordCurrentPos + 1].innerText = word[0]
+                squares[activeWordCurrentPos + 1].innerText = wordsToPlay[0]
                 squares[activeWordCurrentPos + 1].classList.add('active')
                 activeWordCurrentPos += 1
             }
             break
     }
-
-
-
 }
 
+function calculatePoints(){
+    if(wordsToPlay[1] === squares[activeWordCurrentPos + 5].innerText){
+        points ++
+        pointsDisplay.innerText = points
+        messageDisplay.innerText = 'Good!'
+    }
+    else{
+        messageDisplay.innerText = 'Nope!'
+    }
+}
+
+//design message area
+// add more words
