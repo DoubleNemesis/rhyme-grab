@@ -123,3 +123,4 @@ function calculatePoints(){
 
 //design message area
 // add more words
+    // word disappears, new word starts - restart the setinterval?

@@ -5,7 +5,8 @@
     --main-font: 'Roboto';
     --font-light-weight: 100; 
     --font-medium-weight: 400; 
-    --font-strong-weight: 700; 
+    --font-strong-weight: 700;
+    --grid-width: 500px; 
 }
 
 html *{
@@ -39,7 +40,7 @@ h1{
     align-items: center;
 }
 .grid{
-    width: 500px;
+    width: var(--grid-width);
     height: 500px;
     background: var(--bg-box);
     border-radius: 5px;
@@ -58,8 +59,24 @@ h1{
 .active{
     background-color: orange;
 }
-.message, .points{
+.message-area{
+    display: flex;
+    flex-direction: row;
+    width: var(--grid-width);
+    border: 1px solid red;
+}
+.message, .points-area{
     color: white;
     font-size: 1.4rem;
     font-family: var(--main-font);
+    width: 50%;
+    min-width: 50%;
+    border: 1px solid green;
+}
+.points-area{
+ display: flex;   
+}
+.points-label, .points{
+    width: 50%;
+
 }
