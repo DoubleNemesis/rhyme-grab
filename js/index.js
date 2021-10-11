@@ -5,9 +5,20 @@ const gridSquareSize = 50
 let squares = []
 let activeWordCurrentPos = 0
 let tileISActive = false
-const wordsToPlay = ['thorough', 'burrough']
-const targetWords = ['cough', 'rough', 'through', 'though', 'burrough']
+let set = 0
+let wordsToPlay = []
+let targetWords = []
 let points = 0
+
+//fetch data
+fetch('./data/words.json')
+.then(response => response.json())
+.then(data =>{
+    console.log(data.words[set].wordsToPlay)
+    wordsToPlay = data.words[set].wordsToPlay
+    targetWords = data.words[set].targetWords
+    populateGrid()
+})
 
 //grab the grid div
 const grid = document.getElementsByClassName('grid')[0]
@@ -24,7 +35,7 @@ function createGrid() {
         squares.push(square)
     }
     pointsDisplay.innerText = points
-    populateGrid()
+
 }
 createGrid()
 
@@ -119,8 +130,9 @@ function calculatePoints(){
     else{
         messageDisplay.innerText = 'Nope!'
     }
+    //clearwords
+    //startNextSet()
 }
 
-//design message area
 // add more words
     // word disappears, new word starts - restart the setinterval?

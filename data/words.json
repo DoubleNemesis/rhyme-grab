@@ -1,0 +1,43 @@
+{
+    "words": [
+        {
+            "wordsToPlay": [
+                "thorough",
+                "burrough"
+            ],
+            "targetWords": [
+                "cough",
+                "rough",
+                "through",
+                "though",
+                "burrough"
+            ]
+        },
+        {
+            "wordsToPlay": [
+                "rough",
+                "enough"
+            ],
+            "targetWords": [
+                "bough",
+                "dough",
+                "through",
+                "enough",
+                "cough"
+            ]
+        },
+        {
+            "wordsToPlay": [
+                "bought",
+                "sort"
+            ],
+            "targetWords": [
+                "hurt",
+                "cart",
+                "flirt",
+                "height",
+                "sort"
+            ]
+        }
+    ]
+}
