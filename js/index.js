@@ -11,14 +11,18 @@ let targetWords = []
 let points = 0
 
 //fetch data
-fetch('./data/words.json')
-.then(response => response.json())
-.then(data =>{
-    console.log(data.words[set].wordsToPlay)
-    wordsToPlay = data.words[set].wordsToPlay
-    targetWords = data.words[set].targetWords
-    populateGrid()
-})
+function fetchData(){
+    fetch('./data/words.json')
+    .then(response => response.json())
+    .then(data =>{
+        console.log(data.words[set].wordsToPlay)
+        wordsToPlay = data.words[set].wordsToPlay
+        targetWords = data.words[set].targetWords
+        populateGrid()
+    })
+}
+fetchData()
+
 
 //grab the grid div
 const grid = document.getElementsByClassName('grid')[0]
@@ -130,9 +134,15 @@ function calculatePoints(){
     else{
         messageDisplay.innerText = 'Nope!'
     }
-    //clearwords
-    //startNextSet()
+    //if not on final set else end message
+    startNextSet()
+
 }
 
-// add more words
-    // word disappears, new word starts - restart the setinterval?
+function startNextSet(){
+        //clearwords
+    set++
+    fetchData()
+}
+
+
