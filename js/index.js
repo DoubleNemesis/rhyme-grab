@@ -135,9 +135,10 @@ function calculatePoints() {
     }
     else {
         messageDisplay.innerText = 'Nope!'
+        // game over here????
     }
-    //if not on final set else end message
-    startNextSet()
+    //start next set
+    startNextSet() 
 
 }
 
@@ -154,6 +155,7 @@ function startNextSet() {
     }
     else{
         console.log('finished');
+        messageDisplay.innerText = 'Game Over!'
     }
 }
 
