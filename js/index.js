@@ -11,15 +11,15 @@ let targetWords = []
 let points = 0
 
 //fetch data
-function fetchData(){
+function fetchData() {
     fetch('./data/words.json')
-    .then(response => response.json())
-    .then(data =>{
-        console.log(data.words[set].wordsToPlay)
-        wordsToPlay = data.words[set].wordsToPlay
-        targetWords = data.words[set].targetWords
-        populateGrid()
-    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.words[set].wordsToPlay)
+            wordsToPlay = data.words[set].wordsToPlay
+            targetWords = data.words[set].targetWords
+            populateGrid()
+        })
 }
 fetchData()
 
@@ -68,7 +68,7 @@ function start() {
             squares[activeWordCurrentPos + gridWidth].classList.add('active')
             activeWordCurrentPos += gridWidth
         }
-        else{
+        else {
             clearInterval(activeWordTimer)
             tileISActive = false
             calculatePoints()
@@ -97,10 +97,10 @@ function assignMoveMobile(e) {
 // control falling word
 function controlWord(keyCode) {
 
-    if (activeWordCurrentPos > noOfSquares -11){
-        setTimeout(()=>{
+    if (activeWordCurrentPos > noOfSquares - 11) {
+        setTimeout(() => {
             tileISActive = false
-        },300)
+        }, 300)
     }
 
     switch (keyCode) {
@@ -125,13 +125,13 @@ function controlWord(keyCode) {
     }
 }
 
-function calculatePoints(){
-    if(wordsToPlay[1] === squares[activeWordCurrentPos + 5].innerText){
-        points ++
+function calculatePoints() {
+    if (wordsToPlay[1] === squares[activeWordCurrentPos + 5].innerText) {
+        points++
         pointsDisplay.innerText = points
         messageDisplay.innerText = 'Good!'
     }
-    else{
+    else {
         messageDisplay.innerText = 'Nope!'
     }
     //if not on final set else end message
@@ -139,8 +139,11 @@ function calculatePoints(){
 
 }
 
-function startNextSet(){
-        //clearwords
+function startNextSet() {
+    //clearwords
+    squares[activeWordCurrentPos].classList.remove('active')
+    squares[activeWordCurrentPos].innerText = ''
+    //get new word
     set++
     fetchData()
 }
