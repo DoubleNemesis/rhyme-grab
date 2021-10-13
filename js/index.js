@@ -6,6 +6,7 @@ let squares = []
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
+let setMax = 0
 let wordsToPlay = []
 let targetWords = []
 let points = 0
@@ -18,6 +19,7 @@ function fetchData() {
             console.log(data.words[set].wordsToPlay)
             wordsToPlay = data.words[set].wordsToPlay
             targetWords = data.words[set].targetWords
+            setMax = data.words.length
             populateGrid()
         })
 }
@@ -145,7 +147,14 @@ function startNextSet() {
     squares[activeWordCurrentPos].innerText = ''
     //get new word
     set++
-    fetchData()
+    //restart
+    if (set < setMax){
+        fetchData()
+        start()
+    }
+    else{
+        console.log('finished');
+    }
 }
 
 
