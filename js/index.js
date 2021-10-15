@@ -18,7 +18,10 @@ function fetchData() {
         .then(data => {
             console.log(data.words[set].wordsToPlay)
             wordsToPlay = data.words[set].wordsToPlay
-            targetWords = data.words[set].targetWords
+            function shuffle(array) { // put target words in random order
+                return array.sort(() => Math.random() - 0.5);
+              }
+            targetWords = shuffle(data.words[set].targetWords)
             setMax = data.words.length
             populateGrid()
         })
@@ -132,13 +135,15 @@ function calculatePoints() {
         points++
         pointsDisplay.innerText = points
         messageDisplay.innerText = 'Good!'
+        startNextSet() 
     }
     else {
-        messageDisplay.innerText = 'Nope!'
+        console.log('finished');
+        messageDisplay.innerText = 'Game Over!'
         // game over here????
     }
     //start next set
-    startNextSet() 
+
 
 }
 
@@ -155,7 +160,7 @@ function startNextSet() {
     }
     else{
         console.log('finished');
-        messageDisplay.innerText = 'Game Over!'
+        messageDisplay.innerText = 'Game Over! You win!'
     }
 }
 

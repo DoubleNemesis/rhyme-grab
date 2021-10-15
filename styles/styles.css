@@ -44,6 +44,8 @@ h1{
     height: 500px;
     background: var(--bg-box);
     border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     display: flex;
     flex-wrap: wrap;
 }
@@ -63,7 +65,11 @@ h1{
     display: flex;
     flex-direction: row;
     width: var(--grid-width);
-    border: 1px solid red;
+    border: 3px solid white;
+    padding: 1rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    /* border-bottom: none; */
 }
 .message, .points-area{
     color: white;
@@ -71,7 +77,7 @@ h1{
     font-family: var(--main-font);
     width: 50%;
     min-width: 50%;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 .points-area{
  display: flex;   
