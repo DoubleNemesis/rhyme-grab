@@ -3,7 +3,8 @@ const noOfSquares = 50
 const gridWidth = 5
 const gridSquareSize = 50
 let squares = []
-let speed = 1000
+let originalSpeed = 500
+let speed = 500
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
@@ -35,6 +36,7 @@ const grid = document.getElementsByClassName('grid')[0]
 const modal = document.getElementsByClassName('modal')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
+const startBtn = document.getElementsByClassName('start-btn')[0]
 
 //create the grid
 function createGrid() {
@@ -144,7 +146,9 @@ function calculatePoints() {
     else {
         console.log('finished');
         messageDisplay.innerText = `Game Over! You got ${points} points`
+        startBtn.innerText='Play again?';
         modal.style.display = 'flex';
+        reset()
         // game over here????
     }
     //start next set
@@ -167,7 +171,18 @@ function startNextSet() {
         console.log('finished');
         messageDisplay.innerText = `Game Over! You win with ${points} points!`
         modal.style.display = 'flex';
+        startBtn.innerText='Play again?';
+        reset()
     }
 }
 
+function reset(){
+    squares[activeWordCurrentPos].classList.remove('active')
+    squares[activeWordCurrentPos].innerText = ''
+    set = 0
+    points = 0
+    speed = originalSpeed
+    fetchData()
+    pointsDisplay.innerText = 0
+}
 

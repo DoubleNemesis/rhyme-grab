@@ -1,5 +1,6 @@
 :root{
     --bg: #212529;
+    --main-color: skyblue;
     --bg-box: white;
     --light: white;
     --main-font: 'Roboto';
@@ -60,7 +61,7 @@ h1{
     border: 1px solid black;
 }
 .active{
-    background-color: limegreen;
+    background-color: var(--main-color);
 }
 .modal{
     border: 1px solid darkblue;
@@ -74,7 +75,7 @@ h1{
     justify-content: center;
     text-align: center;
     gap: 1em;
-    border: 3px solid limegreen;
+    border: 3px solid var(--main-color);
 }
 .start-btn{
     background-color: white;
@@ -113,7 +114,7 @@ h1{
 .LR-btn{
     width: 150px;
     padding: .5rem 2rem;
-    background-color: limegreen;
+    background-color: var(--main-color);
     color: #141414;
     border: none;
 }
