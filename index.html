@@ -17,8 +17,13 @@
     </section>
     <main>
         <section class="grid-container">
+            <div class="modal">
+                <div class="message">
+                    Ready?
+                </div>
+                    <button class="start-btn" onclick="start()">Go</button>
+            </div>
             <div class="message-area">
-                <div class="message">message</div>
                 <div class="points-area">
                     <div class="points-label">Points:</div>
                     <div class="points">0</div>
@@ -27,7 +32,6 @@
             <div class="grid">
                 <!-- inject grid here from index.js -->
             </div>
-            <button onclick="start()">Click</button>
             <div>
             <button id="left" class="LR-btn" data-key-code="37">Left</button>
             <button id="right" class="LR-btn" data-key-code="39">Right</button>

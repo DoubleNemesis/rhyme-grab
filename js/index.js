@@ -30,8 +30,9 @@ function fetchData() {
 fetchData()
 
 
-//grab the grid div
+//grab the divs
 const grid = document.getElementsByClassName('grid')[0]
+const modal = document.getElementsByClassName('modal')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
 
@@ -65,6 +66,7 @@ function populateGrid() {
 //start the game
 function start() {
     //iterate over squares and - gridWidth
+    modal.style.display = 'none';
     tileISActive = true
     const activeWordTimer = setInterval(() => {
         if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
@@ -141,7 +143,8 @@ function calculatePoints() {
     }
     else {
         console.log('finished');
-        messageDisplay.innerText = 'Game Over!'
+        messageDisplay.innerText = `Game Over! You got ${points} points`
+        modal.style.display = 'flex';
         // game over here????
     }
     //start next set
@@ -162,7 +165,8 @@ function startNextSet() {
     }
     else{
         console.log('finished');
-        messageDisplay.innerText = 'Game Over! You win!'
+        messageDisplay.innerText = `Game Over! You win with ${points} points!`
+        modal.style.display = 'flex';
     }
 }
 

@@ -17,6 +17,7 @@ body{
     background-color: var(--bg);
     margin: 0;
     padding: 0;
+    font-family: var(--main-font);
 }
 
 h1{
@@ -59,7 +60,29 @@ h1{
     border: 1px solid black;
 }
 .active{
-    background-color: orange;
+    background-color: limegreen;
+}
+.modal{
+    border: 1px solid darkblue;
+    position: absolute;
+    width: 290px;
+    background-color: var(--bg);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1em;
+    border: 3px solid limegreen;
+}
+.start-btn{
+    background-color: white;
+    border: none;
+    color: var(--bg);
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
 }
 .message-area{
     display: flex;
