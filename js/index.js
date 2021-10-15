@@ -3,6 +3,7 @@ const noOfSquares = 50
 const gridWidth = 5
 const gridSquareSize = 50
 let squares = []
+let speed = 1000
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
@@ -78,7 +79,7 @@ function start() {
             tileISActive = false
             calculatePoints()
         }
-    }, 500)
+    }, speed)
 }
 
 //set up eventListeners for controls
@@ -135,6 +136,7 @@ function calculatePoints() {
         points++
         pointsDisplay.innerText = points
         messageDisplay.innerText = 'Good!'
+        speed = speed*0.95
         startNextSet() 
     }
     else {
