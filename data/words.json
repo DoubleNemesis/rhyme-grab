@@ -41,54 +41,80 @@
         },
         {
             "wordsToPlay": [
-                "bought",
-                "sort"
+                "weight",
+                "hate"
             ],
             "targetWords": [
-                "hurt",
-                "cart",
-                "flirt",
+                "said",
+                "right",
+                "hate",
                 "height",
-                "sort"
+                "might"
             ]
         },
         {
             "wordsToPlay": [
-                "bought",
-                "sort"
+                "nought",
+                "thought"
             ],
             "targetWords": [
-                "hurt",
-                "cart",
-                "flirt",
-                "height",
-                "sort"
+                "out",
+                "neat",
+                "thought",
+                "through",
+                "chough"
             ]
         },
         {
             "wordsToPlay": [
-                "bought",
-                "sort"
+                "fought",
+                "port"
             ],
             "targetWords": [
-                "hurt",
-                "cart",
-                "flirt",
-                "height",
-                "sort"
+                "pout",
+                "seat",
+                "out",
+                "lout",
+                "port"
             ]
         },
         {
             "wordsToPlay": [
-                "bought",
-                "sort"
+                "laugh",
+                "calf"
             ],
             "targetWords": [
-                "hurt",
-                "cart",
-                "flirt",
-                "height",
-                "sort"
+                "stuff",
+                "north",
+                "rough",
+                "puff",
+                "dearth"
+            ]
+        },
+        {
+            "wordsToPlay": [
+                "naughty",
+                "forty"
+            ],
+            "targetWords": [
+                "forty",
+                "footy",
+                "party",
+                "doughty",
+                "earthy"
+            ]
+        },
+        {
+            "wordsToPlay": [
+                "taught",
+                "sport"
+            ],
+            "targetWords": [
+                "flute",
+                "shoot",
+                "sport",
+                "clout",
+                "sight"
             ]
         }
     ]
