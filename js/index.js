@@ -148,12 +148,10 @@ function calculatePoints() {
         messageDisplay.innerText = `Game Over! You got ${points} points`
         startBtn.innerText='Play again?';
         modal.style.display = 'flex';
+        // show mistake
         reset()
         // game over here????
     }
-    //start next set
-
-
 }
 
 function startNextSet() {
