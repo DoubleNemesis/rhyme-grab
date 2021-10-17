@@ -1,121 +1,44 @@
 {
-    "words": [
-        {
-            "wordsToPlay": [
-                "thorough",
-                "burrough"
-            ],
-            "targetWords": [
-                "cough",
-                "rough",
-                "through",
-                "though",
-                "burrough"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "rough",
-                "enough"
-            ],
-            "targetWords": [
-                "bough",
-                "dough",
-                "through",
-                "enough",
-                "cough"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "bought",
-                "sort"
-            ],
-            "targetWords": [
-                "hurt",
-                "cart",
-                "flirt",
-                "height",
-                "sort"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "weight",
-                "hate"
-            ],
-            "targetWords": [
-                "said",
-                "right",
-                "hate",
-                "height",
-                "might"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "nought",
-                "thought"
-            ],
-            "targetWords": [
-                "out",
-                "neat",
-                "thought",
-                "through",
-                "chough"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "fought",
-                "port"
-            ],
-            "targetWords": [
-                "pout",
-                "seat",
-                "out",
-                "lout",
-                "port"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "laugh",
-                "calf"
-            ],
-            "targetWords": [
-                "stuff",
-                "north",
-                "rough",
-                "puff",
-                "dearth"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "naughty",
-                "forty"
-            ],
-            "targetWords": [
-                "forty",
-                "footy",
-                "party",
-                "doughty",
-                "earthy"
-            ]
-        },
-        {
-            "wordsToPlay": [
-                "taught",
-                "sport"
-            ],
-            "targetWords": [
-                "flute",
-                "shoot",
-                "sport",
-                "clout",
-                "sight"
-            ]
-        }
-    ]
+	"words": [
+		{
+			"wordsToPlay": ["thorough", "burrough"],
+			"targetWords": ["cough", "rough", "through", "though", "burrough"]
+		},
+		{
+			"wordsToPlay": ["rough", "enough"],
+			"targetWords": ["bough", "dough", "through", "enough", "cough"]
+		},
+		{
+			"wordsToPlay": ["bought", "sort"],
+			"targetWords": ["hurt", "cart", "flirt", "height", "sort"]
+		},
+		{
+			"wordsToPlay": ["weight", "hate"],
+			"targetWords": ["said", "right", "hate", "height", "might"]
+		},
+		{
+			"wordsToPlay": ["nought", "thought"],
+			"targetWords": ["out", "neat", "thought", "through", "chough"]
+		},
+		{
+			"wordsToPlay": ["fought", "port"],
+			"targetWords": ["pout", "seat", "out", "lout", "port"]
+		},
+		{
+			"wordsToPlay": ["laugh", "calf"],
+			"targetWords": ["stuff", "north", "rough", "puff", "dearth"]
+		},
+		{
+			"wordsToPlay": ["naughty", "forty"],
+			"targetWords": ["forty", "footy", "party", "doughty", "earthy"]
+		},
+		{
+			"wordsToPlay": ["taught", "sport"],
+			"targetWords": ["flute", "shoot", "sport", "clout", "sight"]
+		},
+		{
+			"wordsToPlay": ["street", "sweet"],
+			"targetWords": ["sweet", "great", "bait", "plate", "trait"]
+		}
+	]
 }
