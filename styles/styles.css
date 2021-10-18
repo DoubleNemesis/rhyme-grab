@@ -5,6 +5,7 @@ html *{
 :root{
     --bg: #212529;
     --main-color: skyblue;
+    --main-pink: #f30b7b;
     --bg-box: white;
     --light: white;
     --main-font: 'Roboto';
@@ -27,7 +28,7 @@ html *{
         --grid-height: 500px; 
         --cell-width: 100px;
         --cell-height: 50px;
-        --font-size: 1.2rem;
+        --font-size: 1.1rem;
     }
 }
 
@@ -40,6 +41,24 @@ body{
     padding: 0;
     font-family: var(--main-font);
 }
+
+@keyframes rightAnim {
+    0% {
+      background-color: yellow;
+    }
+    100% {
+      background-color: limegreen;
+    }
+  }
+
+@keyframes wrongAnim {
+    0% {
+      background-color: red;
+    }
+    100%{
+        background-color: orange;
+    }
+  }
 
 h1{
     color: var(--light);
@@ -89,11 +108,20 @@ h1{
     font-size: var(--font-size);
     font-weight: var(--font-strong-weight);
     border: 1px solid lightgray;
-    /* border-top: none;
-    border-bottom: none; */
 }
 .active{
     background-color: var(--main-color);
+    border: 3px solid var(--main-pink);
+}
+
+.right{
+    animation: rightAnim .15s infinite;
+    background-color: limegreen;
+}
+
+.wrong{
+    animation: wrongAnim .25s reverse infinite;
+    background-color: limegreen;
 }
 .modal{
     border: 1px solid darkblue;
@@ -108,7 +136,7 @@ h1{
     text-align: center;
     gap: 1em;
     border: 3px solid var(--main-color);
-    border: 3px solid #f30b7b;
+    border: 3px solid var(--main-pink);
     border-radius: 5px;
 }
 
@@ -157,7 +185,7 @@ h1{
 }
 .points-label, .points{
     width: 50%;
-
+    
 }
 
 .message{
@@ -165,8 +193,9 @@ h1{
     font-family: var(--main-font);
     font-weight: 400;
     letter-spacing: 1.07px;
-    display: flex;   
-    font-size: var(--font-size-large);
+    display: flex;
+    flex-direction: column;   
+    font-size: var(--font-size);
 }
 
 .LR-btn{

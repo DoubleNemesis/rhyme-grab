@@ -144,26 +144,36 @@ function calculatePoints() {
     }
     else {
         // game over
-        console.log('finished');
 
-        messageDisplay.innerHTML = `
+        squares[activeWordCurrentPos].classList.add('wrong')
+        setTimeout(()=>{
+            document.getElementsByClassName('wrong')[0].classList.remove('wrong')
+            messageDisplay.innerHTML = `
             <h2 class="modal_headline">Game Over!</h2> 
             <p class="modal_text">You should have matched </p> 
-           <span class="modal_word"> ${wordsToPlay[0]}</span>  <br>
-           <span class="modal_text">with </span><br>
-           <span class="modal_word">${wordsToPlay[1]}</span>
-           <p class="modal_text">You got ${points} points</p>
+            <span class="modal_word"> ${wordsToPlay[0]}</span>  <br>
+            <span class="modal_text">with </span><br>
+            <span class="modal_word">${wordsToPlay[1]}</span>
+            <p class="modal_text">You got ${points} points</p>
         `
 
         startBtn.innerText = 'Play again?';
         modal.style.display = 'flex';
         reset()
+        },1000)
+
+
     }
 }
 
 function startNextSet() {
     //clearwords
     squares[activeWordCurrentPos].classList.remove('active')
+    //make tile show success and then remove it
+    squares[activeWordCurrentPos].classList.add('right')
+    setTimeout(()=>{
+        document.getElementsByClassName('right')[0].classList.remove('right')
+    },250)
     squares[activeWordCurrentPos].innerText = ''
     //get new word
     set++

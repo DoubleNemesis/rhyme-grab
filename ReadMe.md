@@ -18,7 +18,5 @@ Game Play:
 To Do:
     add mobile LR tap control
     randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
-    make logo
-    animate tiles nicely
     add instructions page with gif?
     sort out mobile css error!!
