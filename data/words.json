@@ -1,8 +1,8 @@
 {
 	"words": [
 		{
-			"wordsToPlay": ["thorough", "burrough"],
-			"targetWords": ["cough", "rough", "through", "though", "burrough"]
+			"wordsToPlay": ["thorough", "borough"],
+			"targetWords": ["cough", "rough", "through", "though", "borough"]
 		},
 		{
 			"wordsToPlay": ["rough", "enough"],
@@ -42,11 +42,11 @@
 		},
     {
 			"wordsToPlay": ["heaven", "eleven"],
-			"targetWords": ["ten", "hell", "men", "melon", "even"]
+			"targetWords": ["teen", "eleven", "men", "melon", "even"]
 		},
     {
 			"wordsToPlay": ["draw", "claw"],
-			"targetWords": ["flow", "bow", "know", "grow", "borrow"]
+			"targetWords": ["flew", "boo", "know", "grow", "claw"]
 		}
 	]
 }

@@ -8,6 +8,8 @@ html *{
     --bg-box: white;
     --light: white;
     --main-font: 'Roboto';
+    --main-font: 'Montserrat';
+    --main-font: 'Poppins';
     --font-light-weight: 100; 
     --font-medium-weight: 400; 
     --font-strong-weight: 700;
@@ -15,7 +17,8 @@ html *{
     --grid-height: 450px; 
     --cell-width: 20%;
     --cell-height: 45px;
-    --font-size: 1rem;
+    --font-size: .8rem;
+    --font-size-large: 1.5rem;
 }
 
 @media(min-width:700px){
@@ -24,7 +27,7 @@ html *{
         --grid-height: 500px; 
         --cell-width: 100px;
         --cell-height: 50px;
-        --font-size: 1.5rem;
+        --font-size: 1.2rem;
     }
 }
 
@@ -48,6 +51,11 @@ h1{
     display: flex;
     place-content: center;
     width: 100%;
+}
+
+.logo{
+    max-width: 300px;
+    padding: 2rem;
 }
 
 .grid-container{
@@ -100,6 +108,7 @@ h1{
     text-align: center;
     gap: 1em;
     border: 3px solid var(--main-color);
+    border: 3px solid #f30b7b;
     border-radius: 5px;
 }
 
@@ -122,8 +131,9 @@ h1{
     background-color: white;
     border: none;
     color: var(--bg);
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: .8rem 4rem;
     text-transform: uppercase;
 }
 .message-area{
@@ -136,19 +146,27 @@ h1{
     border-top-right-radius: 5px;
     /* border-bottom: none; */
 }
-.message, .points-area{
+.points-area{
     color: white;
     font-family: var(--main-font);
-    /* width: 50%;
-    min-width: 50%; */
-    /* border: 1px solid green; */
-}
-.points-area{
- display: flex;   
+    font-weight: 400;
+    letter-spacing: 1.07px;
+    width: 30%;
+    min-width: 30%;
+    display: flex;   
 }
 .points-label, .points{
     width: 50%;
 
+}
+
+.message{
+    color: white;
+    font-family: var(--main-font);
+    font-weight: 400;
+    letter-spacing: 1.07px;
+    display: flex;   
+    font-size: var(--font-size-large);
 }
 
 .LR-btn{
