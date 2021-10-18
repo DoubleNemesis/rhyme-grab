@@ -18,7 +18,6 @@ function fetchData() {
     fetch('./data/words.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data.words[set].wordsToPlay)
             wordsToPlay = data.words[set].wordsToPlay
             function shuffle(array) { // put target words in random order
                 return array.sort(() => Math.random() - 0.5);
@@ -144,13 +143,12 @@ function calculatePoints() {
         startNextSet() 
     }
     else {
+        // game over
         console.log('finished');
-        messageDisplay.innerText = `Game Over! You got ${points} points`
+        messageDisplay.innerText = `Game Over! You should have matched ${wordsToPlay[0]} with ${wordsToPlay[1]} You got ${points} points`
         startBtn.innerText='Play again?';
         modal.style.display = 'flex';
-        // show mistake
         reset()
-        // game over here????
     }
 }
 

@@ -17,6 +17,7 @@ Game Play:
 
 To Do:
     add mobile LR tap control
-    randomise order of words
-    show mistake at end
+    randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
     make logo
+    animate tiles nicely
+    highlight words in modal
