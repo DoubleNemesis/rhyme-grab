@@ -39,6 +39,14 @@
 		{
 			"wordsToPlay": ["street", "sweet"],
 			"targetWords": ["sweet", "great", "bait", "plate", "trait"]
+		},
+    {
+			"wordsToPlay": ["heaven", "eleven"],
+			"targetWords": ["ten", "hell", "men", "melon", "even"]
+		},
+    {
+			"wordsToPlay": ["draw", "claw"],
+			"targetWords": ["flow", "bow", "know", "grow", "borrow"]
 		}
 	]
 }
