@@ -21,7 +21,7 @@ function fetchData() {
             wordsToPlay = data.words[set].wordsToPlay
             function shuffle(array) { // put target words in random order
                 return array.sort(() => Math.random() - 0.5);
-              }
+            }
             targetWords = shuffle(data.words[set].targetWords)
             setMax = data.words.length
             populateGrid()
@@ -139,14 +139,23 @@ function calculatePoints() {
         points++
         pointsDisplay.innerText = points
         messageDisplay.innerText = 'Good!'
-        speed = speed*0.95
-        startNextSet() 
+        speed = speed * 0.95
+        startNextSet()
     }
     else {
         // game over
         console.log('finished');
-        messageDisplay.innerText = `Game Over! You should have matched ${wordsToPlay[0]} with ${wordsToPlay[1]} You got ${points} points`
-        startBtn.innerText='Play again?';
+
+        messageDisplay.innerHTML = `
+            <h2 class="modal_headline">Game Over!</h2> 
+            <p class="modal_text">You should have matched </p> 
+           <span class="modal_word"> ${wordsToPlay[0]}</span>  <br>
+           <span class="modal_text">with </span><br>
+           <span class="modal_word">${wordsToPlay[1]}</span>
+           <p class="modal_text">You got ${points} points</p>
+        `
+
+        startBtn.innerText = 'Play again?';
         modal.style.display = 'flex';
         reset()
     }
@@ -159,20 +168,20 @@ function startNextSet() {
     //get new word
     set++
     //restart
-    if (set < setMax){
+    if (set < setMax) {
         fetchData()
         start()
     }
-    else{
+    else {
         console.log('finished');
         messageDisplay.innerText = `Game Over! You win with ${points} points!`
         modal.style.display = 'flex';
-        startBtn.innerText='Play again?';
+        startBtn.innerText = 'Play again?';
         reset()
     }
 }
 
-function reset(){
+function reset() {
     squares[activeWordCurrentPos].classList.remove('active')
     squares[activeWordCurrentPos].innerText = ''
     set = 0

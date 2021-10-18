@@ -20,4 +20,3 @@ To Do:
     randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
     make logo
     animate tiles nicely
-    highlight words in modal
