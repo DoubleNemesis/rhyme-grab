@@ -43,8 +43,11 @@ const startBtn = document.getElementsByClassName('start-btn')[0]
 const desktopInstructions = `
             <h2 class="modal_headline">How To Play</h2> 
             <ul>
-            <li>Use the arrow keys to guide the falling word onto a word it rhymes with.</li> 
+            <li>Use <img src="/images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="/images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto a word it rhymes with.</li> 
+            <li>On mobile/tablet tap the left/right half of screen to control falling word.</li> 
+            <li>There is only one correct answer in each word set.</li> 
             <li>You score one point for every word you get correct.</li> 
+            <li>The words get harder and faster as the game goes on.</li> 
             <li>The game's over when you make a mistake.</li> 
             </ul>
 `

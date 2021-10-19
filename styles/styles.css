@@ -146,6 +146,7 @@ h1{
 .modal ul{
     text-align: left;
     font-size: var(--font-size-small);
+    list-style-image: url('/images/bullet.png');
 }
 
 @media(min-width: 700px){
@@ -155,7 +156,7 @@ h1{
 }
 
 .modal_headline{
-    color: whitesmoke;
+    color: var(--main-pink);
     text-transform: uppercase;
     margin-bottom: 0;
 }
@@ -172,15 +173,23 @@ h1{
     line-height: 100%;
 }
 
+.arrow-img{
+    width: 30px;
+}
+
 
 .start-btn{
-    background-color: white;
+    background-color: var(--main-color);
     border: none;
-    color: var(--bg);
+    color: black;
     font-size: 1.5rem;
     font-weight: 700;
     padding: .8rem 4rem;
     text-transform: uppercase;
+}
+
+.start-btn:hover{
+    background-color: var(--main-pink);
 }
 .message-area{
     display: flex;

@@ -17,6 +17,6 @@ Game Play:
 
 To Do:
     randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
-    add instructions page with icons
     fade in/out modal?
+    footer
 
