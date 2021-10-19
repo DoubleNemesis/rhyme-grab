@@ -8,6 +8,7 @@ let speed = 500
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
+let level = 1 
 let setMax = 0
 let wordsToPlay = []
 let targetWords = []
@@ -36,6 +37,7 @@ const grid = document.getElementsByClassName('grid')[0]
 const modal = document.getElementsByClassName('modal')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
+const levelDisplay = document.getElementsByClassName('level')[0]
 const startBtn = document.getElementsByClassName('start-btn')[0]
 const year = document.getElementsByClassName('year')[0]
 
@@ -45,11 +47,11 @@ const desktopInstructions = `
             <h2 class="modal_headline">How To Play</h2> 
             <ul>
             <li>Use <img src="/images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="/images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto a word it rhymes with.</li> 
-            <li>On mobile/tablet tap the left/right half of screen to control falling word.</li> 
+            <li>On mobile devices, tap the left/right half of screen to control falling word.</li> 
             <li>There is only one correct answer in each word set.</li> 
             <li>You score one point for every word you get correct.</li> 
             <li>The words get harder and faster as the game goes on.</li> 
-            <li>The game's over when you make a mistake.</li> 
+            <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
             </ul>
 `
 
@@ -86,7 +88,10 @@ function populateGrid() {
 //start the game
 function start() {
     //iterate over squares and - gridWidth
-    modal.style.display = 'none';
+    modal.style.animation = 'fadeOut .25s';
+    setTimeout(()=>{
+        modal.style.display = 'none'
+    },250)
     tileISActive = true
     const activeWordTimer = setInterval(() => {
         if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
@@ -118,20 +123,10 @@ document.addEventListener('touchstart', (e)=> {
     }
 })
 
-// let buttonLeft = document.getElementById('left')
-// let buttonRight = document.getElementById('right')
-// buttonLeft.addEventListener('click', assignMoveMobile)
-// buttonRight.addEventListener('click', assignMoveMobile)
-
 function assignMoveKeys(e) {
     const keyCode = e.keyCode
     controlWord(keyCode)
 }
-
-// function assignMoveMobile(e) {
-//     const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
-//     controlWord(keyCode)
-// }
 
 // control falling word
 function controlWord(keyCode) {
@@ -167,9 +162,14 @@ function controlWord(keyCode) {
 function calculatePoints() {
     if (wordsToPlay[1] === squares[activeWordCurrentPos + 5].innerText) {
         points++
+        if (points % 4 === 0){
+            level++
+            speed = speed * 0.98
+        }
         pointsDisplay.innerText = points
+        levelDisplay.innerText = level
         messageDisplay.innerText = 'Good!'
-        speed = speed * 0.98
+        
         startNextSet()
     }
     else {
@@ -189,7 +189,9 @@ function calculatePoints() {
 
         startBtn.innerText = 'Play again?';
         modal.style.display = 'flex';
-        reset()
+        modal.style.animation = 'fadeIn .25s forwards'
+        startBtn.addEventListener('click', reset)
+        //reset()
         },1000)
 
 
@@ -226,6 +228,7 @@ function reset() {
     squares[activeWordCurrentPos].innerText = ''
     set = 0
     points = 0
+    level = 0
     speed = originalSpeed
     fetchData()
     pointsDisplay.innerText = 0

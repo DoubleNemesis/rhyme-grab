@@ -16,7 +16,6 @@ Game Play:
 
 
 To Do:
-    randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
-    fade in/out modal?
-    footer
+    css level mpbile / desktop
+    dont clear words until newgame
 
