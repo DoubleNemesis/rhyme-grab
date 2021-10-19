@@ -40,6 +40,10 @@
 			"wordsToPlay": ["street", "sweet"],
 			"targetWords": ["sweet", "great", "bait", "plate", "trait"]
 		},
+    {
+			"wordsToPlay": ["heaven", "eleven"],
+			"targetWords": ["teen", "eleven", "men", "melon", "even"]
+		},
 		{
 			"wordsToPlay": ["heaven", "eleven"],
 			"targetWords": ["teen", "eleven", "men", "melon", "even"]
@@ -49,6 +53,10 @@
 			"targetWords": ["flew", "boo", "know", "grow", "claw"]
 		},
 		{
+			"wordsToPlay": ["cat", "bat"],
+			"targetWords": ["rat", "wow", "nice", "amazing", "good"]
+		},
+    {
 			"wordsToPlay": ["money", "honey"],
 			"targetWords": ["clip", "mourn", "honey", "drop", "club"]
 		},
