@@ -37,6 +37,7 @@ const modal = document.getElementsByClassName('modal')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
 const startBtn = document.getElementsByClassName('start-btn')[0]
+const year = document.getElementsByClassName('year')[0]
 
 //set up instructions for mobile and desktop
 
@@ -229,4 +230,9 @@ function reset() {
     fetchData()
     pointsDisplay.innerText = 0
 }
+
+//add date to footer
+
+const yearNow = new Date()
+year.innerText = yearNow.getFullYear()
 

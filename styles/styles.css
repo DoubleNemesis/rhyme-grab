@@ -26,9 +26,9 @@ html *{
 @media(min-width:700px){
     :root{
         --grid-width: 500px; 
-        --grid-height: 500px; 
+        --grid-height: 450px; 
         --cell-width: 100px;
-        --cell-height: 50px;
+        --cell-height: 45px;
         --font-size: 1.1rem;
         --font-size-small: .9rem;
     }
@@ -43,6 +43,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: var(--main-font);
+    height: 100vh;
 }
 
 @keyframes rightAnim {
@@ -77,13 +78,13 @@ h1{
 
 .logo{
     max-width: 300px;
-    padding: 2rem 0 0 0;
+    padding: 2rem 0 1rem 0;
 }
 
 .grid-container{
     width: 100%;
     max-width: 100%;
-    height: 90vh;
+    /* height: 90vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -232,6 +233,15 @@ h1{
     display: flex;
     flex-direction: column;   
     font-size: var(--font-size);
+}
+
+footer{
+    color: white;
+    font-size: var(--font-size-small);
+    width: 100%;
+    text-align: center;
+    padding: 2em 0 1em 0;
+    background-color: transparent;
 }
 
 /* .LR-btn{
