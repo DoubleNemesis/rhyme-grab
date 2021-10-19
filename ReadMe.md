@@ -16,7 +16,7 @@ Game Play:
 
 
 To Do:
-    add mobile LR tap control
     randomise order of words IF DESIRABLE, RANDOMISE VARIABLE "SET"
-    add instructions page with gif?
-    sort out mobile css error!!
+    add instructions page with icons
+    fade in/out modal?
+
