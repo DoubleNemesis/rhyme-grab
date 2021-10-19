@@ -183,8 +183,18 @@ h1{
     min-width: 30%;
     display: flex;   
 }
+
+@media(max-width: 700px){
+    .points-area{
+        width: 50%;
+        min-width: 50%;
+    } 
+}
 .points-label, .points{
     width: 50%;
+    background: black;
+    padding: 0 0 0 .5rem;
+    border-radius: 5px;
     
 }
 

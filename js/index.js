@@ -139,7 +139,7 @@ function calculatePoints() {
         points++
         pointsDisplay.innerText = points
         messageDisplay.innerText = 'Good!'
-        speed = speed * 0.95
+        speed = speed * 0.98
         startNextSet()
     }
     else {
