@@ -13,6 +13,7 @@ let wordsToPlay = []
 let targetWords = []
 let points = 0
 
+
 //fetch data
 function fetchData() {
     fetch('./data/words.json')
@@ -37,6 +38,18 @@ const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
 const startBtn = document.getElementsByClassName('start-btn')[0]
 
+//set up instructions for mobile and desktop
+
+const desktopInstructions = `
+            <h2 class="modal_headline">How To Play</h2> 
+            <ul>
+            <li>Use the arrow keys to guide the falling word onto a word it rhymes with.</li> 
+            <li>You score one point for every word you get correct.</li> 
+            <li>The game's over when you make a mistake.</li> 
+            </ul>
+`
+
+
 //create the grid
 function createGrid() {
     for (let i = 0; i < noOfSquares; i++) {
@@ -47,12 +60,14 @@ function createGrid() {
         squares.push(square)
     }
     pointsDisplay.innerText = points
+    messageDisplay.innerHTML = desktopInstructions
 
 }
 createGrid()
 
-//populate the grid
+//populate the grid & set instructions
 function populateGrid() {
+
     let j = 0
     for (let i = noOfSquares - gridWidth; i < noOfSquares; i++) {
         squares[i].innerText = targetWords[j]
@@ -87,21 +102,32 @@ function start() {
 
 //set up eventListeners for controls
 document.addEventListener('keydown', assignMoveKeys) //desktop only
+document.addEventListener('touchstart', (e)=> {
 
-let buttonLeft = document.getElementById('left')
-let buttonRight = document.getElementById('right')
-buttonLeft.addEventListener('click', assignMoveMobile)
-buttonRight.addEventListener('click', assignMoveMobile)
+    if(e.view.innerWidth/2 > e.touches[0].clientX){
+        // go left
+        controlWord(37)
+    }
+    else{
+        //go right
+        controlWord(39)
+    }
+})
+
+// let buttonLeft = document.getElementById('left')
+// let buttonRight = document.getElementById('right')
+// buttonLeft.addEventListener('click', assignMoveMobile)
+// buttonRight.addEventListener('click', assignMoveMobile)
 
 function assignMoveKeys(e) {
     const keyCode = e.keyCode
     controlWord(keyCode)
 }
 
-function assignMoveMobile(e) {
-    const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
-    controlWord(keyCode)
-}
+// function assignMoveMobile(e) {
+//     const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
+//     controlWord(keyCode)
+// }
 
 // control falling word
 function controlWord(keyCode) {
@@ -151,9 +177,9 @@ function calculatePoints() {
             messageDisplay.innerHTML = `
             <h2 class="modal_headline">Game Over!</h2> 
             <p class="modal_text">You should have matched </p> 
-            <span class="modal_word"> ${wordsToPlay[0]}</span>  <br>
-            <span class="modal_text">with </span><br>
-            <span class="modal_word">${wordsToPlay[1]}</span>
+            <div class="modal_word"> ${wordsToPlay[0]}</div>
+            <div class="modal_text">with </div>
+            <div class="modal_word">${wordsToPlay[1]}</div>
             <p class="modal_text">You got ${points} points</p>
         `
 
