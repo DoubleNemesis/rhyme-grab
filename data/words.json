@@ -47,6 +47,82 @@
     {
 			"wordsToPlay": ["draw", "claw"],
 			"targetWords": ["flew", "boo", "know", "grow", "claw"]
+		},
+    {
+			"wordsToPlay": ["money", "honey"],
+			"targetWords": ["clip", "mourn", "honey", "drop", "club"]
+		},
+    {
+			"wordsToPlay": ["twin", "win"],
+			"targetWords": ["win", "double", "two", "together", "twice"]
+		},
+    {
+			"wordsToPlay": ["culture", "future"],
+			"targetWords": ["drain", "decision", "wild", "future", "ahead"]
+		},
+    {
+			"wordsToPlay": ["slice", "mice"],
+			"targetWords": ["stupid", "mice", "funny", "mild", "lover"]
+		},
+    {
+			"wordsToPlay": ["wright", "write"],
+			"targetWords": ["map", "write", "happy", "bird", "fly"]
+		},
+    {
+			"wordsToPlay": ["range", "change"],
+			"targetWords": ["remove", "change", "fake", "trainer", "live"]
+		},
+    {
+			"wordsToPlay": ["piece", "peace"],
+			"targetWords": ["peace", "equity", "calm", "quiet", "silent"]
+		},
+    {
+			"wordsToPlay": ["unicorn", "popcorn"],
+			"targetWords": ["popcorn", "cheez", "snack", "fire", "play"]
+		},
+    {
+			"wordsToPlay": ["perimeter", "kilometer"],
+			"targetWords": ["kilometer", "distance", "miles", "away", "area"]
+		},
+    {
+			"wordsToPlay": ["honeymoon", "fullmoon"],
+			"targetWords": ["fullmoon", "date", "marriage", "carry", "home"]
+		},
+    {
+			"wordsToPlay": ["zero", "hero"],
+			"targetWords": ["hero", "weak", "save", "winner", "cup"]
+		},
+    {
+			"wordsToPlay": ["happy", "sappy"],
+			"targetWords": ["joy", "free", "sappy", "sad", "sour"]
+		},
+    {
+			"wordsToPlay": ["shark", "lark"],
+			"targetWords": ["lark", "soap", "tree", "ocean", "sea"]
+		},
+    {
+			"wordsToPlay": ["puffin", "dolphin"],
+			"targetWords": ["dolphin", "dribble", "fish", "animal", "keep"]
+		},
+    {
+			"wordsToPlay": ["eagle", "beagle"],
+			"targetWords": ["beagle", "film", "bird", "leave", "long"]
+		},
+    {
+			"wordsToPlay": ["crustacean", "dalmatian"],
+			"targetWords": ["dalmatian", "cleaner", "weed", "copy", "organ"]
+		},
+    {
+			"wordsToPlay": ["kangaroo", "caribou"],
+			"targetWords": ["caribou", "forest", "play", "monster", "pipe"]
+		},
+    {
+			"wordsToPlay": ["moose", "goose"],
+			"targetWords": ["sloth", "goose", "sleep", "slow", "climb"]
+		},
+    {
+			"wordsToPlay": ["tongue", "lung"],
+			"targetWords": ["lung", "short", "see", "sound", "name"]
 		}
 	]
 }
