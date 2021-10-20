@@ -8,7 +8,7 @@ let speed = 500
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
-let level = 1 
+let level = 1
 let setMax = 0
 let wordsToPlay = []
 let targetWords = []
@@ -35,6 +35,7 @@ fetchData()
 //grab the divs
 const game = document.getElementsByClassName('game')[0]
 const grid = document.getElementsByClassName('grid')[0]
+const countDown = document.getElementsByClassName('count-down')[0]
 const intro = document.getElementsByClassName('intro')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
@@ -92,35 +93,51 @@ function start() {
     intro.style.animation = 'fadeOut .25s';
     game.style.animation = 'fadeIn .25s forwards';
     game.style.display = 'inline';
-    setTimeout(()=>{
+    setTimeout(() => {
         intro.style.display = 'none'
-    },250)
+    }, 250)
     tileISActive = true
-    const activeWordTimer = setInterval(() => {
-        if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
-            squares[activeWordCurrentPos].innerText = ""
-            squares[activeWordCurrentPos].classList.remove('active')
-            squares[activeWordCurrentPos + gridWidth].innerText = wordsToPlay[0]
-            squares[activeWordCurrentPos + gridWidth].classList.add('active')
-            activeWordCurrentPos += gridWidth
+    let timeLeft = 2
+    const countDownTimer = setInterval(()=>{
+        if(timeLeft>0){
+            countDown.innerText = timeLeft
+            timeLeft--
         }
-        else {
-            clearInterval(activeWordTimer)
-            tileISActive = false
-            calculatePoints()
+        else{
+            clearInterval(countDownTimer)
+            countDown.innerText = ''
         }
-    }, speed)
+        
+    },1000)
+    setTimeout(() => {
+        const activeWordTimer = setInterval(() => {
+            if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
+                squares[activeWordCurrentPos].innerText = ""
+                squares[activeWordCurrentPos].classList.remove('active')
+                squares[activeWordCurrentPos + gridWidth].innerText = wordsToPlay[0]
+                squares[activeWordCurrentPos + gridWidth].classList.add('active')
+                activeWordCurrentPos += gridWidth
+            }
+            else {
+                clearInterval(activeWordTimer)
+                tileISActive = false
+                calculatePoints()
+            }
+        }, speed)
+
+    }, 3000)
+
 }
 
 //set up eventListeners for controls
 document.addEventListener('keydown', assignMoveKeys) //desktop only
-document.addEventListener('touchstart', (e)=> {
+document.addEventListener('touchstart', (e) => {
 
-    if(e.view.innerWidth/2 > e.touches[0].clientX){
+    if (e.view.innerWidth / 2 > e.touches[0].clientX) {
         // go left
         controlWord(37)
     }
-    else{
+    else {
         //go right
         controlWord(39)
     }
@@ -165,21 +182,21 @@ function controlWord(keyCode) {
 function calculatePoints() {
     if (wordsToPlay[1] === squares[activeWordCurrentPos + 5].innerText) {
         points++
-        if (points % 4 === 0){
+        if (points % 4 === 0) {
             level++
             speed = speed * 0.98
         }
         pointsDisplay.innerText = points
         levelDisplay.innerText = level
         messageDisplay.innerText = 'Good!'
-        
+
         startNextSet()
     }
     else {
         // game over
 
         squares[activeWordCurrentPos].classList.add('wrong')
-        setTimeout(()=>{
+        setTimeout(() => {
             document.getElementsByClassName('wrong')[0].classList.remove('wrong')
             messageDisplay.innerHTML = `
             <h2 class="intro_headline">Game Over!</h2> 
@@ -190,12 +207,12 @@ function calculatePoints() {
             <p class="intro_text">You got ${points} points</p>
         `
 
-        startBtn.innerText = 'Play again?';
-        intro.style.display = 'flex';
-        intro.style.animation = 'fadeIn .25s forwards'
-        startBtn.addEventListener('click', reset)
-        //reset()
-        },1000)
+            startBtn.innerText = 'Play again?';
+            intro.style.display = 'flex';
+            intro.style.animation = 'fadeIn .25s forwards'
+            startBtn.addEventListener('click', reset)
+            //reset()
+        }, 1000)
 
 
     }
@@ -206,9 +223,9 @@ function startNextSet() {
     squares[activeWordCurrentPos].classList.remove('active')
     //make tile show success and then remove it
     squares[activeWordCurrentPos].classList.add('right')
-    setTimeout(()=>{
+    setTimeout(() => {
         document.getElementsByClassName('right')[0].classList.remove('right')
-    },250)
+    }, 250)
     squares[activeWordCurrentPos].innerText = ''
     //get new word
     set++

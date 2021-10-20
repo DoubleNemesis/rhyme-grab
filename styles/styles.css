@@ -119,6 +119,7 @@ h1{
     /* border: 1px solid red; */
 }
 .grid{
+    position: relative;
     width: var(--grid-width);
     height: var(--grid-height);
     background: var(--bg-box);
@@ -143,6 +144,19 @@ h1{
 .active{
     background-color: var(--main-color);
     border: 3px solid var(--main-pink);
+}
+
+.count-down{
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    text-align: center;
+    font-size: 100px;
+    color: chartreuse;
+    opacity: 0.8;
 }
 
 .right{
