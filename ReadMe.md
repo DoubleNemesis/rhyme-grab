@@ -16,11 +16,11 @@ Game Play:
 
 
 To Do:
-    conditionally render grid?
-    321 countdown for game
-    move footer to bottom
+
+
     make instructions more of homepage "rhynmedrop is a game"
     check words
     check lenovo screen res and compare to chrome dev tools
+    square size moves on word length
 
 

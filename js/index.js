@@ -87,29 +87,34 @@ function populateGrid() {
     activeWordCurrentPos = ranNum
 }
 
-//start the game
+//start the countdown
+function go(){
+        //iterate over squares and - gridWidth
+        intro.style.animation = 'fadeOut .25s';
+        game.style.animation = 'fadeIn .25s forwards';
+        game.style.display = 'inline';
+        setTimeout(() => {
+            intro.style.display = 'none'
+        }, 250)
+        let timeLeft = 2
+        const countDownTimer = setInterval(()=>{
+            if(timeLeft>0){
+                countDown.innerText = timeLeft
+                timeLeft--
+            }
+            else{
+                clearInterval(countDownTimer)
+                countDown.innerText = ''
+                start()
+            }
+            
+        },1000)
+}
+
+
+//start the drop
 function start() {
-    //iterate over squares and - gridWidth
-    intro.style.animation = 'fadeOut .25s';
-    game.style.animation = 'fadeIn .25s forwards';
-    game.style.display = 'inline';
-    setTimeout(() => {
-        intro.style.display = 'none'
-    }, 250)
     tileISActive = true
-    let timeLeft = 2
-    const countDownTimer = setInterval(()=>{
-        if(timeLeft>0){
-            countDown.innerText = timeLeft
-            timeLeft--
-        }
-        else{
-            clearInterval(countDownTimer)
-            countDown.innerText = ''
-        }
-        
-    },1000)
-    setTimeout(() => {
         const activeWordTimer = setInterval(() => {
             if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
                 squares[activeWordCurrentPos].innerText = ""
@@ -124,8 +129,6 @@ function start() {
                 calculatePoints()
             }
         }, speed)
-
-    }, 3000)
 
 }
 
@@ -150,7 +153,7 @@ function assignMoveKeys(e) {
 
 // control falling word
 function controlWord(keyCode) {
-
+    console.log('i ran');
     if (activeWordCurrentPos > noOfSquares - 11) {
         setTimeout(() => {
             tileISActive = false
@@ -160,6 +163,7 @@ function controlWord(keyCode) {
     switch (keyCode) {
         case 37:
             if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0 && tileISActive) {
+                console.log('l');
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos - 1].innerText = wordsToPlay[0]
@@ -167,8 +171,9 @@ function controlWord(keyCode) {
                 activeWordCurrentPos -= 1
             }
             break
-        case 39:
-            if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
+            case 39:
+                if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
+                console.log('r');
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos + 1].innerText = wordsToPlay[0]
@@ -235,7 +240,6 @@ function startNextSet() {
         start()
     }
     else {
-        console.log('finished');
         messageDisplay.innerText = `Game Over! You win with ${points} points!`
         intro.style.display = 'flex';
         startBtn.innerText = 'Play again?';
