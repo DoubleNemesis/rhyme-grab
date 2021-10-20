@@ -1,7 +1,6 @@
 
 html *{
     box-sizing: border-box;
-    font-size: 16px;
 }
 :root{
     --bg: #212529;
@@ -9,7 +8,8 @@ html *{
     --main-pink: #f30b7b;
     --bg-box: white;
     --light: white;
-    --main-font: 'Roboto';
+    --main-font: 'Open Sans';
+    /* --main-font: 'Roboto'; */
     --main-font: 'Montserrat';
     --main-font: 'Poppins';
     --font-light-weight: 100; 
@@ -20,8 +20,10 @@ html *{
     --cell-width: 20%;
     --cell-height: 45px;
     --font-size: .8rem;
-    --font-size-small: .7rem;
+    --font-size-small: .9rem;
     --font-size-large: 1.5rem;
+    --font-size-smaller: .6rem;
+    --font-size-larger: 1.4rem;
 }
 
 @media(min-width:700px){
@@ -31,6 +33,7 @@ html *{
         --cell-width: 100px;
         --cell-height: 45px;
         --font-size: 1.1rem;
+        --font-size-larger: 1.4rem;
         --font-size-small: .9rem;
         --font-size-smaller: .8rem;
     }
@@ -44,8 +47,23 @@ body{
     margin: 0;
     padding: 0;
     font-family: var(--main-font);
-    height: 100vh;
+    min-height: 100vh;
 }
+
+@media(min-width:1025px){
+    .mobile-only{
+        display: none;
+    }
+}
+@media(max-width:1024px){
+    .desktop-only{
+        display: none;
+    }
+}
+
+
+
+
 
 @keyframes rightAnim {
     0% {
@@ -98,11 +116,13 @@ h1{
     padding: 2rem 0 1rem 0;
 }
 
+
 .game{
     opacity:0;
-    position: absolute;
-    top:0;
+    /* position: absolute;
+    top:0; */
     z-index: -1;
+    display: none;
 }
 
 .grid-container{
@@ -132,13 +152,15 @@ h1{
     box-shadow: 3px 3px 3px 3px #333;
 }
 .square{
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     width: var(--cell-width);
+    min-width: 50px;
     height: var(--cell-height);
     font-size: var(--font-size);
-    font-weight: var(--font-strong-weight);
+    font-weight: var(--font-strong);
     border: 1px solid lightgray;
 }
 .active{
@@ -147,7 +169,6 @@ h1{
 }
 
 .count-down{
-    position: absolute;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -168,20 +189,58 @@ h1{
     animation: wrongAnim .25s reverse infinite;
     background-color: limegreen;
 }
+
+.opener{
+    padding: 0 0rem 0 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.opener h1{
+    color: var(--main-color);
+    font-weight: 400; 
+    margin: 0;
+    padding: 0;
+}
+
+.screen{
+    min-width: 25%;
+}
+
+@media(min-width:700px){
+    .opener{
+        padding: 0 0rem 0 2rem;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .screen{
+        min-width: 25%;
+    }
+
+    img.screen{
+        width: 300px;
+        max-height: 320px;
+        border: 1px solid red;
+        align-self: center;
+    }
+}
+
+
 .intro{
-    /* position: absolute; */
-    width: 90%;
+    width: 100%;
     background-image: linear-gradient(#666, var(--bg));
-    padding: 1em 0 2em 0;
+    padding: 1em 1em 1em 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     gap: 1em;
-    border: 3px solid var(--main-pink);
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px 3px #333;
     opacity: 1;
 }
 
@@ -189,19 +248,32 @@ h1{
     text-align: left;
     font-size: var(--font-size-small);
     list-style-image: url('../images/bullet.png');
+    font-weight: 300;
+}
+
+.intro li{
+    margin-bottom: 10px;
 }
 
 @media(min-width: 700px){
     .intro{
-        width: 50%;
+        width: 80%;
         height: 60%;
+        border: 3px solid var(--main-pink);
+        padding: 4em 2em 4em 2em;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px 3px #333;
     }
 }
 
 .intro_headline{
     color: var(--main-pink);
-    text-transform: uppercase;
     margin-bottom: 0;
+}
+h2.intro_headline{
+    font-size: var(--font-size-larger);
+    font-weight: 400;
+    font-family: var(--main-font);
 }
 .intro_text{
     color: whitesmoke;
@@ -289,20 +361,17 @@ h1{
 }
 
 footer{
-    position: fixed;
-    bottom: 0;
     color: white;
     font-size: var(--font-size-smaller);
     width: 100%;
     text-align: center;
-    padding: 2em 0 1em 0;
+    padding: 2em 1em 1em 1em;
     background-color: transparent;
 }
 
-/* .LR-btn{
-    width: 150px;
-    padding: .5rem 2rem;
-    background-color: var(--main-color);
-    color: #141414;
-    border: none;
-} */
+@media(min-width: 700px){
+    footer{
+        position: fixed;
+        bottom: 0;
+    }
+}

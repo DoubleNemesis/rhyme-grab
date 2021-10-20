@@ -48,8 +48,8 @@ const year = document.getElementsByClassName('year')[0]
 const desktopInstructions = `
             <h2 class="intro_headline">How To Play</h2> 
             <ul>
-            <li>Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto a word it rhymes with.</li> 
-            <li>On mobile devices, tap the left/right half of screen to control falling word.</li> 
+            <li class="desktop-only">Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto the word it rhymes with.</li> 
+            <li class="mobile-only">Tap the left/right half of the screen to control the falling word.</li> 
             <li>There is only one correct answer in each word set.</li> 
             <li>You score one point for every word you get correct.</li> 
             <li>The words get harder and faster as the game goes on.</li> 
@@ -105,7 +105,7 @@ function go(){
             else{
                 clearInterval(countDownTimer)
                 countDown.innerText = ''
-                start()
+                // start()
             }
             
         },1000)

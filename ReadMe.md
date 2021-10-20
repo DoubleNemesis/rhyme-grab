@@ -16,11 +16,9 @@ Game Play:
 
 
 To Do:
-
-
-    make instructions more of homepage "rhynmedrop is a game"
+    css ipdae game play
+    mobile rounded corners on grid
     check words
     check lenovo screen res and compare to chrome dev tools
-    square size moves on word length
 
 

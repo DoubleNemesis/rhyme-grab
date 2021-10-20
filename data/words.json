@@ -1,6 +1,10 @@
 {
 	"words": [
 		{
+			"wordsToPlay": ["cat", "hat"],
+			"targetWords": ["hat", "lot", "stick", "what", "latte"]
+		},
+		{
 			"wordsToPlay": ["thorough", "borough"],
 			"targetWords": ["cough", "rough", "through", "though", "borough"]
 		},
