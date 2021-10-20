@@ -33,8 +33,9 @@ fetchData()
 
 
 //grab the divs
+const game = document.getElementsByClassName('game')[0]
 const grid = document.getElementsByClassName('grid')[0]
-const modal = document.getElementsByClassName('modal')[0]
+const intro = document.getElementsByClassName('intro')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
 const levelDisplay = document.getElementsByClassName('level')[0]
@@ -44,9 +45,9 @@ const year = document.getElementsByClassName('year')[0]
 //set up instructions for mobile and desktop
 
 const desktopInstructions = `
-            <h2 class="modal_headline">How To Play</h2> 
+            <h2 class="intro_headline">How To Play</h2> 
             <ul>
-            <li>Use <img src="/images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="/images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto a word it rhymes with.</li> 
+            <li>Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto a word it rhymes with.</li> 
             <li>On mobile devices, tap the left/right half of screen to control falling word.</li> 
             <li>There is only one correct answer in each word set.</li> 
             <li>You score one point for every word you get correct.</li> 
@@ -88,9 +89,11 @@ function populateGrid() {
 //start the game
 function start() {
     //iterate over squares and - gridWidth
-    modal.style.animation = 'fadeOut .25s';
+    intro.style.animation = 'fadeOut .25s';
+    game.style.animation = 'fadeIn .25s forwards';
+    game.style.display = 'inline';
     setTimeout(()=>{
-        modal.style.display = 'none'
+        intro.style.display = 'none'
     },250)
     tileISActive = true
     const activeWordTimer = setInterval(() => {
@@ -179,17 +182,17 @@ function calculatePoints() {
         setTimeout(()=>{
             document.getElementsByClassName('wrong')[0].classList.remove('wrong')
             messageDisplay.innerHTML = `
-            <h2 class="modal_headline">Game Over!</h2> 
-            <p class="modal_text">You should have matched </p> 
-            <div class="modal_word"> ${wordsToPlay[0]}</div>
-            <div class="modal_text">with </div>
-            <div class="modal_word">${wordsToPlay[1]}</div>
-            <p class="modal_text">You got ${points} points</p>
+            <h2 class="intro_headline">Game Over!</h2> 
+            <p class="intro_text">You should have matched </p> 
+            <div class="intro_word"> ${wordsToPlay[0]}</div>
+            <div class="intro_text">with </div>
+            <div class="intro_word">${wordsToPlay[1]}</div>
+            <p class="intro_text">You got ${points} points</p>
         `
 
         startBtn.innerText = 'Play again?';
-        modal.style.display = 'flex';
-        modal.style.animation = 'fadeIn .25s forwards'
+        intro.style.display = 'flex';
+        intro.style.animation = 'fadeIn .25s forwards'
         startBtn.addEventListener('click', reset)
         //reset()
         },1000)
@@ -217,7 +220,7 @@ function startNextSet() {
     else {
         console.log('finished');
         messageDisplay.innerText = `Game Over! You win with ${points} points!`
-        modal.style.display = 'flex';
+        intro.style.display = 'flex';
         startBtn.innerText = 'Play again?';
         reset()
     }

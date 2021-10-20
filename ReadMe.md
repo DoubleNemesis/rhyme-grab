@@ -16,6 +16,11 @@ Game Play:
 
 
 To Do:
-    css level mpbile / desktop
-    dont clear words until newgame
+    conditionally render grid?
+    321 countdown for game
+    move footer to bottom
+    make instructions more of homepage "rhynmedrop is a game"
+    check words
+    check lenovo screen res and compare to chrome dev tools
+
 

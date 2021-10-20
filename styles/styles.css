@@ -1,6 +1,7 @@
 
 html *{
     box-sizing: border-box;
+    font-size: 16px;
 }
 :root{
     --bg: #212529;
@@ -37,7 +38,6 @@ html *{
 
 body{
     background-color: var(--bg);
-    background-image: url('/images/bg.jpg');
     background-image: linear-gradient(var(--bg), #666);
     background-size: cover;
     background-position: 10% 10%;
@@ -98,6 +98,13 @@ h1{
     padding: 2rem 0 1rem 0;
 }
 
+.game{
+    opacity:0;
+    position: absolute;
+    top:0;
+    z-index: -1;
+}
+
 .grid-container{
     width: 100%;
     max-width: 100%;
@@ -108,6 +115,8 @@ h1{
     align-items: center;
     margin: .0em 0;
     padding: .0em;
+    position: relative;
+    /* border: 1px solid red; */
 }
 .grid{
     width: var(--grid-width);
@@ -145,8 +154,8 @@ h1{
     animation: wrongAnim .25s reverse infinite;
     background-color: limegreen;
 }
-.modal{
-    position: absolute;
+.intro{
+    /* position: absolute; */
     width: 90%;
     background-image: linear-gradient(#666, var(--bg));
     padding: 1em 0 2em 0;
@@ -162,31 +171,31 @@ h1{
     opacity: 1;
 }
 
-.modal ul{
+.intro ul{
     text-align: left;
     font-size: var(--font-size-small);
-    list-style-image: url('/images/bullet.png');
+    list-style-image: url('../images/bullet.png');
 }
 
 @media(min-width: 700px){
-    .modal{
+    .intro{
         width: 50%;
         height: 60%;
     }
 }
 
-.modal_headline{
+.intro_headline{
     color: var(--main-pink);
     text-transform: uppercase;
     margin-bottom: 0;
 }
-.modal_text{
+.intro_text{
     color: whitesmoke;
     letter-spacing: 1.2px;
     font-size: .9rem;
     margin: .3rem;
 }
-.modal_word{
+.intro_word{
     color: var(--main-color);
     font-size: 160%;
     padding: 0;
@@ -266,6 +275,8 @@ h1{
 }
 
 footer{
+    position: fixed;
+    bottom: 0;
     color: white;
     font-size: var(--font-size-smaller);
     width: 100%;

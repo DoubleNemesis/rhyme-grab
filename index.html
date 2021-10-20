@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,34 +20,36 @@
     </section>
     <main>
         <section class="grid-container">
-            <div class="modal">
+            <!-- first render -->
+            <div class="intro">
                 <div class="message">
                 </div>
-                    <button class="start-btn" onclick="start()">Go</button>
+                <button class="start-btn" onclick="start()">Go</button>
             </div>
-            <div class="message-area">
-                <div class="points-area">
-                    <div class="points-area-cluster">
-                        <div class="points-area-label">Points:</div>
-                        <div class="points">0</div>
-                    </div> 
-                    <div class="points-area-cluster">
-                        <div class="points-area-label">Level:</div>
-                        <div class="level">1</div>
-                    </div>                   
+            <!-- end first render -->
+            <!-- second render -->
+            <div class="game">
+                <div class="message-area">
+                    <div class="points-area">
+                        <div class="points-area-cluster">
+                            <div class="points-area-label">Points:</div>
+                            <div class="points">0</div>
+                        </div>
+                        <div class="points-area-cluster">
+                            <div class="points-area-label">Level:</div>
+                            <div class="level">1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid">
+                    <!-- inject grid here from index.js -->
                 </div>
             </div>
-            <div class="grid">
-                <!-- inject grid here from index.js -->
-            </div>
-            <!-- <div>
-            <button id="left" class="LR-btn" data-key-code="37">Left</button>
-            <button id="right" class="LR-btn" data-key-code="39">Right</button>
-            </div> -->
+            <!-- end second render  -->
         </section>
     </main>
     <footer>
-        RhymeDrop is &copy; Thomas P Chant <span class="year"></span> all rights reserved. 
+        RhymeDrop is &copy; Thomas P Chant <span class="year"></span> all rights reserved.
     </footer>
     <script src="./js/index.js"></script>
 </body>
