@@ -12,12 +12,8 @@ Game Play:
 
     if not, it's game over
 
-
-
-
 To Do:
-    css ipdae game play
     check words
-    check lenovo screen res and compare to chrome dev tools
-
+    end screen must be pos absolute: new div?
+    deal with win message - check using right div
 

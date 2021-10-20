@@ -38,9 +38,12 @@ const grid = document.getElementsByClassName('grid')[0]
 const countDown = document.getElementsByClassName('count-down')[0]
 const intro = document.getElementsByClassName('intro')[0]
 const messageDisplay = document.getElementsByClassName('message')[0]
+const endMessageDisplay = document.getElementsByClassName('end-message')[0]
+const endMessageText = document.getElementsByClassName('end-message-text')[0]
 const pointsDisplay = document.getElementsByClassName('points')[0]
 const levelDisplay = document.getElementsByClassName('level')[0]
 const startBtn = document.getElementsByClassName('start-btn')[0]
+const endBtn = document.getElementsByClassName('end-btn')[0]
 const year = document.getElementsByClassName('year')[0]
 
 //set up instructions for mobile and desktop
@@ -56,6 +59,7 @@ const desktopInstructions = `
             <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
             </ul>
 `
+
 
 
 //create the grid
@@ -153,7 +157,6 @@ function assignMoveKeys(e) {
 
 // control falling word
 function controlWord(keyCode) {
-    console.log('i ran');
     if (activeWordCurrentPos > noOfSquares - 11) {
         setTimeout(() => {
             tileISActive = false
@@ -163,7 +166,6 @@ function controlWord(keyCode) {
     switch (keyCode) {
         case 37:
             if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0 && tileISActive) {
-                console.log('l');
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos - 1].innerText = wordsToPlay[0]
@@ -173,7 +175,6 @@ function controlWord(keyCode) {
             break
             case 39:
                 if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
-                console.log('r');
                 squares[activeWordCurrentPos].classList.remove('active')
                 squares[activeWordCurrentPos].innerText = ''
                 squares[activeWordCurrentPos + 1].innerText = wordsToPlay[0]
@@ -203,8 +204,8 @@ function calculatePoints() {
         squares[activeWordCurrentPos].classList.add('wrong')
         setTimeout(() => {
             document.getElementsByClassName('wrong')[0].classList.remove('wrong')
-            messageDisplay.innerHTML = `
-            <h2 class="intro_headline">Game Over!</h2> 
+            endMessageText.innerHTML = `
+            <h2 class="end_headline">Game Over!</h2> 
             <p class="intro_text">You should have matched </p> 
             <div class="intro_word"> ${wordsToPlay[0]}</div>
             <div class="intro_text">with </div>
@@ -212,11 +213,10 @@ function calculatePoints() {
             <p class="intro_text">You got ${points} points</p>
         `
 
-            startBtn.innerText = 'Play again?';
-            intro.style.display = 'flex';
-            intro.style.animation = 'fadeIn .25s forwards'
-            startBtn.addEventListener('click', reset)
-            //reset()
+        endMessageDisplay.style.display = 'flex';
+            endBtn.innerText = 'Play again?';
+            endBtn.addEventListener('click', reset)
+            // reset()
         }, 1000)
 
 
@@ -240,14 +240,17 @@ function startNextSet() {
         start()
     }
     else {
-        messageDisplay.innerText = `Game Over! You win with ${points} points!`
-        intro.style.display = 'flex';
-        startBtn.innerText = 'Play again?';
-        reset()
+        //this!!!!!
+        console.log('ending');
+        endMessageText.innerHTML = `<h2 class="end_win">Game Over! You win with ${points} points!</h2>`
+        endMessageDisplay.style.display = 'flex';
+        endBtn.innerText = 'Play again?';
+        // reset()
     }
 }
 
 function reset() {
+    endMessageDisplay.style.display = 'none'
     squares[activeWordCurrentPos].classList.remove('active')
     squares[activeWordCurrentPos].innerText = ''
     set = 0
