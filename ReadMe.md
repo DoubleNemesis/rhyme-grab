@@ -17,7 +17,6 @@ Game Play:
 
 To Do:
     css ipdae game play
-    mobile rounded corners on grid
     check words
     check lenovo screen res and compare to chrome dev tools
 

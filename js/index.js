@@ -105,7 +105,7 @@ function go(){
             else{
                 clearInterval(countDownTimer)
                 countDown.innerText = ''
-                // start()
+                start()
             }
             
         },1000)
