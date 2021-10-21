@@ -5,36 +5,40 @@
 			"targetWords": ["hat", "lot", "stick", "what", "latte"]
 		},
 		{
-			"wordsToPlay": ["thorough", "borough"],
-			"targetWords": ["cough", "rough", "through", "though", "borough"]
-		},
-		{
-			"wordsToPlay": ["rough", "enough"],
-			"targetWords": ["bough", "dough", "through", "enough", "cough"]
-		},
-		{
-			"wordsToPlay": ["bought", "sort"],
-			"targetWords": ["hurt", "cart", "flirt", "height", "sort"]
-		},
-		{
 			"wordsToPlay": ["weight", "hate"],
 			"targetWords": ["said", "right", "hate", "height", "might"]
 		},
 		{
+			"wordsToPlay": ["twin", "win"],
+			"targetWords": ["win", "spine", "line", "lane", "lean"]
+		},
+		{
+			"wordsToPlay": ["slice", "mice"],
+			"targetWords": ["slick", "mice", "march", "mild", "march"]
+		},
+		{
 			"wordsToPlay": ["nought", "thought"],
-			"targetWords": ["out", "neat", "thought", "through", "chough"]
+			"targetWords": ["out", "neat", "thought", "through", "touch"]
 		},
 		{
-			"wordsToPlay": ["fought", "port"],
-			"targetWords": ["pout", "seat", "out", "lout", "port"]
+			"wordsToPlay": ["said", "bread"],
+			"targetWords": ["bread", "shave", "speed", "weed", "change"]
 		},
 		{
-			"wordsToPlay": ["laugh", "calf"],
-			"targetWords": ["stuff", "north", "rough", "puff", "calf"]
+			"wordsToPlay": ["climb", "slime"],
+			"targetWords": ["slime", "limb", "slim", "green", "geese"]
 		},
 		{
-			"wordsToPlay": ["naughty", "forty"],
-			"targetWords": ["forty", "footy", "party", "doughty", "earthy"]
+			"wordsToPlay": ["walk", "talk"],
+			"targetWords": ["talk", "bulk", "hulk", "sank", "link"]
+		},
+		{
+			"wordsToPlay": ["tough", "stuff"],
+			"targetWords": ["cough", "stuff", "through", "though", "know"]
+		},
+		{
+			"wordsToPlay": ["train", "crane"],
+			"targetWords": ["crane", "range", "taste", "sign", "time"]
 		},
 		{
 			"wordsToPlay": ["taught", "sport"],
@@ -43,10 +47,6 @@
 		{
 			"wordsToPlay": ["street", "sweet"],
 			"targetWords": ["sweet", "great", "bait", "plate", "trait"]
-		},
-    {
-			"wordsToPlay": ["heaven", "eleven"],
-			"targetWords": ["teen", "eleven", "men", "melon", "even"]
 		},
 		{
 			"wordsToPlay": ["heaven", "eleven"],
@@ -58,151 +58,79 @@
 		},
 		{
 			"wordsToPlay": ["cat", "bat"],
-			"targetWords": ["rat", "wow", "nice", "amazing", "good"]
+			"targetWords": ["bat", "fit", "nut", "sit", "lot"]
 		},
-    {
+    	{
 			"wordsToPlay": ["money", "honey"],
-			"targetWords": ["clip", "mourn", "honey", "drop", "club"]
-		},
-		{
-			"wordsToPlay": ["twin", "win"],
-			"targetWords": ["win", "double", "two", "together", "twice"]
-		},
-		{
-			"wordsToPlay": ["culture", "future"],
-			"targetWords": ["drain", "decision", "wild", "future", "ahead"]
-		},
-		{
-			"wordsToPlay": ["slice", "mice"],
-			"targetWords": ["stupid", "mice", "funny", "mild", "lover"]
-		},
-		{
-			"wordsToPlay": ["wright", "write"],
-			"targetWords": ["map", "write", "happy", "bird", "fly"]
+			"targetWords": ["phoney", "silly", "honey", "droopy", "bay"]
 		},
 		{
 			"wordsToPlay": ["range", "change"],
-			"targetWords": ["remove", "change", "fake", "trainer", "live"]
+			"targetWords": ["orange", "change", "grunge", "twinge", "slang"]
 		},
 		{
 			"wordsToPlay": ["piece", "peace"],
-			"targetWords": ["peace", "equity", "calm", "quiet", "silent"]
-		},
-		{
-			"wordsToPlay": ["unicorn", "popcorn"],
-			"targetWords": ["popcorn", "cheez", "snack", "fire", "play"]
-		},
-		{
-			"wordsToPlay": ["perimeter", "kilometer"],
-			"targetWords": ["kilometer", "distance", "miles", "away", "area"]
-		},
-		{
-			"wordsToPlay": ["honeymoon", "fullmoon"],
-			"targetWords": ["fullmoon", "date", "marriage", "carry", "home"]
+			"targetWords": ["peace", "pace", "race", "spice", "nice"]
 		},
 		{
 			"wordsToPlay": ["zero", "hero"],
-			"targetWords": ["hero", "weak", "save", "winner", "cup"]
+			"targetWords": ["hero", "terror", "fever", "thorough", "near"]
 		},
 		{
-			"wordsToPlay": ["happy", "sappy"],
-			"targetWords": ["joy", "free", "sappy", "sad", "sour"]
+			"wordsToPlay": ["laugh", "graph"],
+			"targetWords": ["stuff", "north", "rough", "puff", "graph"]
 		},
 		{
-			"wordsToPlay": ["shark", "lark"],
-			"targetWords": ["lark", "soap", "tree", "ocean", "sea"]
+			"wordsToPlay": ["rough", "enough"],
+			"targetWords": ["cow", "dough", "through", "enough", "cough"]
 		},
 		{
-			"wordsToPlay": ["puffin", "dolphin"],
-			"targetWords": ["dolphin", "dribble", "fish", "animal", "keep"]
+			"wordsToPlay": ["shark", "dark"],
+			"targetWords": ["dark", "work", "fork", "perk", "seek"]
 		},
 		{
 			"wordsToPlay": ["eagle", "beagle"],
-			"targetWords": ["beagle", "film", "bird", "leave", "long"]
+			"targetWords": ["beagle", "single", "ring", "league", "fling"]
 		},
 		{
-			"wordsToPlay": ["crustacean", "dalmatian"],
-			"targetWords": ["dalmatian", "cleaner", "weed", "copy", "organ"]
-		},
-		{
-			"wordsToPlay": ["kangaroo", "caribou"],
-			"targetWords": ["caribou", "forest", "play", "monster", "pipe"]
-		},
-		{
-			"wordsToPlay": ["moose", "goose"],
-			"targetWords": ["sloth", "goose", "sleep", "slow", "climb"]
+			"wordsToPlay": ["moose", "juice"],
+			"targetWords": ["sloth", "geese", "crow", "cow", "juice"]
 		},
 		{
 			"wordsToPlay": ["tongue", "lung"],
-			"targetWords": ["lung", "short", "see", "sound", "name"]
+			"targetWords": ["lung", "gunge", "long", "sound", "mound"]
 		},
 		{
-			"wordsToPlay": ["create", "dilate"],
-			"targetWords": ["dilate", "feat", "bathe", "latte", "chaste"]
+			"wordsToPlay": ["bought", "sort"],
+			"targetWords": ["hurt", "cart", "flirt", "height", "sort"]
 		},
 		{
-			"wordsToPlay": ["train", "crane"],
-			"targetWords": ["crane", "range", "taste", "sign", "time"]
-		},
-		{
-			"wordsToPlay": ["said", "bread"],
-			"targetWords": ["bread", "shave", "steed", "heed", "change"]
-		},
-		{
-			"wordsToPlay": ["wine", "crime"],
-			"targetWords": ["crime", "team", "sing", "mean", "garage"]
-		},
-		{
-			"wordsToPlay": ["acquire", "admire"],
-			"targetWords": ["admire", "steal", "metabolise", "creating", "fired"]
-		},
-		{
-			"wordsToPlay": ["walking", "hiking"],
-			"targetWords": ["hiking", "binge", "malign", "signature", "stung"]
-		},
-		{
-			"wordsToPlay": ["ache", "forsake"],
-			"targetWords": ["forsake", "scale", "satchel", "funus", "bike"]
-		},
-		{
-			"wordsToPlay": ["tent", "repent"],
-			"targetWords": ["repent", "obvious", "spend", "relenting", "orange"]
-		},
-		{
-			"wordsToPlay": ["microphone", "trombone"],
-			"targetWords": ["trombone", "belong", "octopus", "microscope", "hospital"]
+			"wordsToPlay": ["ache", "sake"],
+			"targetWords": ["sake", "scale", "satchel", "like", "ash"]
 		},
 		{
 			"wordsToPlay": ["wild", "child"],
-			"targetWords": ["child", "crime", "chilled", "island", "mind"]
+			"targetWords": ["child", "field", "sealed", "freed", "milled"]
 		},
 		{
-			"wordsToPlay": ["career", "queer"],
-			"targetWords": ["queer", "steal", "obscure", "carting", "star"]
-		},
-		{
-			"wordsToPlay": ["obfuscate", "plate"],
-			"targetWords": ["plate", "potato", "salad", "", ""]
-		},
-		{
-			"wordsToPlay": ["channel", "panel"],
-			"targetWords": ["panel", "change", "lane", "feel", "fresh"]
+			"wordsToPlay": ["ear", "steer"],
+			"targetWords": ["steer", "stir", "marr", "car", "fur"]
 		},
 		{
 			"wordsToPlay": ["beat", "fleet"],
-			"targetWords": ["fleet", "subscribe", "monkey", "feature", "wrote"]
+			"targetWords": ["fleet", "late", "latte", "slight", "weigh"]
 		},
 		{
 			"wordsToPlay": ["knight", "kite"],
-			"targetWords": ["kite", "loch", "fought", "lathe", "sling"]
+			"targetWords": ["kite", "loch", "fought", "lathe", "sought"]
 		},
 		{
-			"wordsToPlay": ["cook", "partook"],
-			"targetWords": ["partook", "patriot", "truck", "weight", "much"]
+			"wordsToPlay": ["fought", "port"],
+			"targetWords": ["out", "seat", "out", "lout", "port"]
 		},
 		{
-			"wordsToPlay": ["forlorn", "torn"],
-			"targetWords": ["torn", "blood", "awning", "shrimp", "morning"]
+			"wordsToPlay": ["naughty", "forty"],
+			"targetWords": ["forty", "footy", "party", "worthy", "earthy"]
 		}
 	]
 }
