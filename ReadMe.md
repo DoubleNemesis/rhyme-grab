@@ -13,6 +13,7 @@ Game Play:
     if not, it's game over
 
 To Do:
-    check words
-
+    iPhone 5???
+    cocept: as the word moves down the screen, move it left or right so it lands on a word it rhymes with.
+    sort out homepage link from logo
 

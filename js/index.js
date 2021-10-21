@@ -49,17 +49,17 @@ const year = document.getElementsByClassName('year')[0]
 
 //set up instructions for mobile and desktop
 
-const desktopInstructions = `
-            <h2 class="intro_headline">How To Play</h2> 
-            <ul>
-            <li class="desktop-only">Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto the word it rhymes with.</li> 
-            <li class="mobile-only">Tap the left/right half of the screen to control the falling word.</li> 
-            <li>There is only one correct answer in each word set.</li> 
-            <li>You score one point for every word you get right.</li> 
-            <li>It gets harder and faster as the game goes on.</li> 
-            <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
-            </ul>
-`
+// const desktopInstructions = `
+//             <h2 class="intro_headline">Move the word left or right so it lands on a word it rhymes with</h2> 
+//             <ul>
+//             <li class="desktop-only">Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word.</li> 
+//             <li class="mobile-only">Tap the left/right half of the screen to control the falling word.</li> 
+//             <li>There is only one correct answer in each word set.</li> 
+//             <li>You score one point for every word you get right.</li> 
+//             <li>It gets harder and faster as the game goes on.</li> 
+//             <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
+//             </ul>
+// `
 
 
 
@@ -73,7 +73,7 @@ function createGrid() {
         squares.push(square)
     }
     pointsDisplay.innerText = points
-    messageDisplay.innerHTML = desktopInstructions
+    // messageDisplay.innerHTML = desktopInstructions
 
 }
 createGrid()

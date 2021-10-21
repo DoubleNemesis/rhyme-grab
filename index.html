@@ -17,15 +17,29 @@
 
 <body>
     <section class="header">
-        <a href="/"><img src="./images/logo.png" alt="Rhyme Drop" class="logo"></a>
+        <a href="www.tomsclassroom.com/rhymedrop"><img src="./images/logo.png" alt="Rhyme Drop" class="logo"></a>
     </section>
     <main>
         <section class="grid-container">
             <!-- first render -->
             <div class="intro">
                 <div class="opener">
-                    <div class="message"></div>
-                <img class="screen" src="./images/screen.png">
+                    <div class="message">
+                        <h2 class="intro_headline">Move the highlighted word left or right so it lands on a rhyming word</h2> 
+                        <img class="screen" src="./images/screen2.png">
+
+                        <div style="display:none">
+                        <ul>
+                        <li class="desktop-only">Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word.</li> 
+                        <li class="mobile-only">Tap the left/right half of the screen to control the falling word.</li> 
+                        <li>There is only one correct answer in each word set.</li> 
+                        <li>You score one point for every word you get right.</li> 
+                        <li>It gets harder and faster as the game goes on.</li> 
+                        <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
+                        </ul>
+                        </div>
+                    </div>
+
             </div>
                 <button class="start-btn" onclick="go()">Play</button>
             </div>
@@ -45,8 +59,7 @@
                     </div>
                 </div>
                 <div class="end-message">
-                    <div class="end-message-text">
-                        
+                    <div class="end-message-text">    
                     </div>
                     <button class="end-btn" onclick="go()">Play</button>
                 </div>

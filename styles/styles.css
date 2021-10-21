@@ -123,8 +123,15 @@ h1{
 }
 
 .logo{
-    max-width: 300px;
-    padding: 2rem 0 1rem 0;
+    max-width: 250px;
+    padding: 1.5rem 0 .75rem 0;
+}
+
+@media(min-width: 700px){
+    .logo{
+        max-width: 300px;
+        padding: 2rem 0 1rem 0;
+    }
 }
 
 
@@ -251,7 +258,7 @@ h1{
     img.screen{
         width: 300px;
         max-height: 320px;
-        border: 1px solid red;
+        /* border: 1px solid red; */
         align-self: center;
     }
 }
@@ -292,15 +299,16 @@ h1{
     }
 }
 
-.intro_headline{
-    color: var(--main-pink);
-    margin-bottom: 0;
-}
+/* .intro_headline{
+
+} */
 h2.intro_headline{
-    font-size: var(--font-size-larger);
+    color: var(--main-color);
+    font-size: .8rem;
     font-weight: 400;
     font-family: var(--main-font);
     margin-top: 0;
+    margin-bottom: 1rem;
     /* margin-bottom: 1rem; */
 }
 h2.end_headline{
