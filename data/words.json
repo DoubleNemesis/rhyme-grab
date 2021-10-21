@@ -81,10 +81,6 @@
 			"targetWords": ["stuff", "north", "rough", "puff", "graph"]
 		},
 		{
-			"wordsToPlay": ["rough", "enough"],
-			"targetWords": ["cow", "dough", "through", "enough", "cough"]
-		},
-		{
 			"wordsToPlay": ["shark", "dark"],
 			"targetWords": ["dark", "work", "fork", "perk", "seek"]
 		},
@@ -115,6 +111,10 @@
 		{
 			"wordsToPlay": ["ear", "steer"],
 			"targetWords": ["steer", "stir", "marr", "car", "fur"]
+		},
+		{
+			"wordsToPlay": ["rough", "enough"],
+			"targetWords": ["cow", "dough", "through", "enough", "cough"]
 		},
 		{
 			"wordsToPlay": ["beat", "fleet"],

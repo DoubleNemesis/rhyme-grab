@@ -244,6 +244,7 @@ function startNextSet() {
         endMessageText.innerHTML = `<h2 class="end_win">Game Over! You win with ${points} points!</h2>`
         endMessageDisplay.style.display = 'flex';
         endBtn.innerText = 'Play again?';
+        endBtn.addEventListener('click', reset)
         // reset()
     }
 }
