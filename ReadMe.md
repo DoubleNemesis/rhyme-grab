@@ -14,6 +14,5 @@ Game Play:
 
 To Do:
     check words
-    end screen must be pos absolute: new div?
-    deal with win message - check using right div
+
 

@@ -3,12 +3,13 @@ const noOfSquares = 50
 const gridWidth = 5
 const gridSquareSize = 50
 let squares = []
-let originalSpeed = 500
+const originalSpeed = 500
 let speed = 500
 let activeWordCurrentPos = 0
 let tileISActive = false
 let set = 0
 let level = 1
+const originalevel = 1
 let setMax = 0
 let wordsToPlay = []
 let targetWords = []
@@ -54,8 +55,8 @@ const desktopInstructions = `
             <li class="desktop-only">Use <img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img"> to guide the falling word onto the word it rhymes with.</li> 
             <li class="mobile-only">Tap the left/right half of the screen to control the falling word.</li> 
             <li>There is only one correct answer in each word set.</li> 
-            <li>You score one point for every word you get correct.</li> 
-            <li>The words get harder and faster as the game goes on.</li> 
+            <li>You score one point for every word you get right.</li> 
+            <li>It gets harder and faster as the game goes on.</li> 
             <li>When you make a mistake, it's <span class="strong">game over</span>.</li> 
             </ul>
 `
@@ -255,7 +256,8 @@ function reset() {
     squares[activeWordCurrentPos].innerText = ''
     set = 0
     points = 0
-    level = 0
+    level = originalevel
+    levelDisplay.innerText = level
     speed = originalSpeed
     fetchData()
     pointsDisplay.innerText = 0

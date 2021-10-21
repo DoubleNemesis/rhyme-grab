@@ -1,7 +1,10 @@
 
-html *{
+html {
     box-sizing: border-box;
-}
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
 :root{
     --bg: #212529;
     --main-color: skyblue;
@@ -43,13 +46,19 @@ html *{
 
 body{
     background-color: var(--bg);
-    background-image: linear-gradient(var(--bg), #666);
+    background-image: linear-gradient(var(--bg), #333);
     background-size: cover;
     background-position: 10% 10%;
     margin: 0;
     padding: 0;
     font-family: var(--main-font);
     min-height: 110vh;
+}
+
+@media(min-width:700px){
+    body{
+        background-image: linear-gradient(var(--bg), #666);
+    }
 }
 
 @media(min-width:1025px){
@@ -157,11 +166,15 @@ h1{
     flex-wrap: wrap;
     margin-bottom: 1em;
     box-shadow: 3px 3px 3px 3px #333;
+    border-left: 2px solid var(--bg);
+    border-right: 2px solid var(--bg);
 }
 
 @media(min-width:700px){
     .grid{
         border-radius: 5px;
+        border-left: unset;
+        border-right: unset;
     }
 }
 .square{
@@ -351,14 +364,16 @@ h2.end_win{
     display: flex;
     flex-direction: row;
     width: var(--grid-width);
-    border: 3px solid var(--main-color);
     padding: 1rem;
+    border-top: 3px solid var(--main-color);
+
 
     /* border-bottom: none; */
 }
 
 @media(min-width: 700px){
     .message-area{
+        border: 3px solid var(--main-color);
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     } 
@@ -409,7 +424,7 @@ h2.end_win{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
+    width: 90%;
     display: none;
     z-index: 2;
     background-image: linear-gradient(#666, var(--bg));
