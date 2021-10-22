@@ -14,6 +14,8 @@ const StyledLogo = styled.img`
 }
 `
 
+// logo click = clear all, return to "openings"
+
 export default function Header() {
     return (
         <HeaderContainer>

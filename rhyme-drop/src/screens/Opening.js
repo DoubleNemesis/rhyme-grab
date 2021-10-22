@@ -16,7 +16,7 @@ export default function Openings(props) {
         <MainContainer>
            <H1>A word rhyming game of speed and skill</H1>
            <StyledImage src={Screen} alt="game board"/>
-            <NavigationBlock setComponentToDisplay={props.setComponentToDisplay}/>
+           <NavigationBlock setComponentToDisplay={props.setComponentToDisplay}/>
         </MainContainer>
     )
 }

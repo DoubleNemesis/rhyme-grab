@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { ReactComponent as Cog } from '../images/cog.svg'
+import { ReactComponent as Information } from '../images/information.svg'
 
 const ButtonsContainer = styled.div`
 display: flex;
@@ -34,7 +35,7 @@ export default function NavigationBlock(props) {
     return (
         <ButtonsContainer>
             <Button borderColor="skyblue" color="#f30b7b" onClick={() => props.setComponentToDisplay('game')}>Play</Button>
-            <Button borderColor="#f30b7b" color="skyblue" onClick={() => props.setComponentToDisplay('instructions')}>Help</Button>
+            <Button borderColor="#f30b7b" color="skyblue" onClick={() => props.setComponentToDisplay('instructions')}><Information/></Button>
             <Button borderColor="#f30b7b" color="skyblue" onClick={() => props.setComponentToDisplay('settings')}><Cog /></Button>
         </ButtonsContainer>
 
