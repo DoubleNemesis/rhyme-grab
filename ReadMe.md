@@ -14,6 +14,12 @@ Game Play:
 
 To Do:
     iPhone 5???
-    cocept: as the word moves down the screen, move it left or right so it lands on a word it rhymes with.
     sort out homepage link from logo
+    redo front page graphic: red crosses green tick and multi direction arrows
+    levels of difficulty?
+    lives?
+    backend hall of fame? pass data to php = validate and update json blob, retrieve as API
+    tool tip = levels, hall of fame + detailed instructions
+    or 4 buttons: play, i, cog, trophy
+    speedy downshift and recrod time?
 
