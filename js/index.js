@@ -16,6 +16,7 @@ let targetWords = []
 let points = 0
 
 
+
 //fetch data
 function fetchData() {
     fetch('./data/words.json')
