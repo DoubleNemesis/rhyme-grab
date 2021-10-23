@@ -48,7 +48,7 @@ export default function Instructions(props) {
                         <li>There is only one correct answer in each word set.</li>
                         <li>You score one point for every word you get right.</li>
                         <li>It gets harder and faster as the game goes on.</li>
-                        <li>When you make a mistake, it's <span class="strong">game over</span>.</li>
+                        <li>When you make a mistake, it's <span className="strong">game over</span>.</li>
                 </Ul>
                 <NavigationBlock setComponentToDisplay={props.setComponentToDisplay}/>
         </MainContainer>

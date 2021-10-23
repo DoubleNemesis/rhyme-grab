@@ -1,6 +1,9 @@
 import styled from "styled-components"
+import BulletL from '../../images/bulletL.png'
+import BulletR from '../../images/bulletR.png'
 
 export const GameContainer = styled.div`
+position: relative;
 
 .cell{
     width: 20%;
@@ -80,11 +83,13 @@ export const GameContainer = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 10%;
+    width: 30%;
     text-align: center;
-    font-size: 100px;
-    color: chartreuse;
-    opacity: 0.8;
+    font-size: 20px;
+    color: red;
+    background-color: black;
+    opacity: 1;
+    text-transform: uppercase;
 }
 
 .end-message{
@@ -93,7 +98,6 @@ export const GameContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    display: none;
     z-index: 2;
     background-image: linear-gradient(#666, #212529);
     flex-direction: column;
@@ -103,7 +107,7 @@ export const GameContainer = styled.div`
     @media(min-width: 700px){
             width: 50%;
             /* height: 60%; */
-            border: 3px solid var(--main-pink);
+            border: 3px solid #f30b7b;
             padding: 4em 2em 4em 2em;
             border-radius: 5px;
             box-shadow: 3px 3px 3px 3px #333;
@@ -113,6 +117,68 @@ export const GameContainer = styled.div`
     }
 }
 
+h2.intro_headline{
+    color: skyblue;
+    font-size: .8rem;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+}
+h2.end_headline{
+    font-size: 1.8rem;
+    color: #f30b7b;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+h2.end_win{
+    font-size: 1.4rem;
+    color: #f30b7b;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.intro_text{
+    color: whitesmoke;
+    letter-spacing: 1.2px;
+    font-size: .9rem;
+    margin: .3rem;
+}
+.intro_word{
+    color: skyblue;
+    font-size: 160%;
+    padding: 0;
+    line-height: 100%;
+}
 
-
+.buttons-container{
+    display: none;
+}
+@media(pointer: coarse){
+    .buttons-container{
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1rem;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.5;
+    }
+}
+`
+export const DirectionBtns = styled.button`
+background-image: url(
+    ${({ id }) => id === 'left' ? BulletL : BulletR}
+    );
+width: 20vw;
+height: 10vw;
+background-repeat: no-repeat;
+background-size: contain;
+background-position-x: center;
+background-color: transparent;
+border: 1px solid skyblue;
+padding: 1rem;
 `

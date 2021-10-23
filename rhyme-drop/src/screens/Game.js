@@ -1,36 +1,71 @@
-import { useEffect } from 'react'
-import styled from 'styled-components'
-import NavigationBlock from '../components/NavigationBlock'
-import { GameContainer } from './gameComponents/GameComponents'
+import { useCallback, useEffect, useState } from 'react'
+import { GameContainer, DirectionBtns } from './gameComponents/GameComponents'
+
+const noOfSquares = 50
+let grid
+const gridWidth = 5
+let cells = []
+let targetWords = []
+let setMax = 0
+let set = 0
+let wordsToPlay = []
+let activeWordCurrentPos = 0
+let countDown
+let speed = 500
+let tileISActive = false
+let points = 0
+let level = 1
+let pointsDisplay
+let levelDisplay
+let directionBtns
+const originalSpeed = 500
+const originalevel = 1
 
 
-export default function Game(props) {
-    const noOfSquares = 50
-    let grid
-    const gridWidth = 5
-    let cells = []
-    let targetWords = []
-    let setMax = 0
-    let set = 0
-    let wordsToPlay = []
-    let activeWordCurrentPos = 0
-    let countDown
-    let speed = 500
-    let tileISActive = false
-    let points = 0
-    let level = 1
-    let pointsDisplay
-    let levelDisplay
-    const originalSpeed = 500
-    const originalevel = 1
+export default function Game() {
+
+    const [tileIsFalling, setTileIsFalling] = useState(false)
+    const [gameIsOver, setGameIsOver] = useState(false)
+    const [victoryIsYours, setVictoryIsYours] = useState(false)
+
+    const GameOverMessage = () => {
+        return (
+            <>
+                <h2 className="end_headline">Game Over!</h2>
+                <p className="intro_text">You should have matched </p>
+                <div className="intro_word"> {wordsToPlay[0]}</div>
+                <div className="intro_text">with </div>
+                <div className="intro_word">{wordsToPlay[1]}</div>
+                <p className="intro_text">You got {points} points</p>
+            </>
+        )
+    }
+
+    const VictoryMessage = () => {
+        return (
+            <>
+            <h2 className="end_win">Game Over!</h2> 
+            <h2 className="end_win">You win with {points} points!</h2>
+            </>
+        )
+    }
+
+    const getKeyCode = useCallback((e) => {
+        const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
+        controlWord(keyCode)
+    }, [])
 
 
-    //create the grid
-    function createGrid() {
+    const createGrid = useCallback(() => {
         grid = document.getElementsByClassName('grid')[0]
         countDown = document.getElementsByClassName('count-down')[0]
         pointsDisplay = document.getElementsByClassName('points')[0]
         levelDisplay = document.getElementsByClassName('level')[0]
+        directionBtns = document.querySelectorAll('.direction-button')
+        directionBtns.forEach((elem) => {
+            elem.addEventListener('click', getKeyCode)
+        })
+
         for (let i = 0; i < noOfSquares; i++) {
             const cell = document.createElement('div')
             cell.classList.add('cell')
@@ -38,37 +73,10 @@ export default function Game(props) {
             grid.appendChild(cell)
             cells.push(cell)
         }
-        // pointsDisplay.innerText = points
-    }
-
-    function fetchData(){
-        fetch('./data/words.json')
-        .then(response => response.json())
-        .then(data => {
-            console.log(1, data);
-            wordsToPlay = data.words[set].wordsToPlay
-            function shuffle(array) { // put target words in random order
-                return array.sort(() => Math.random() - 0.5);
-            }
-            targetWords = shuffle(data.words[set].targetWords)
-            setMax = data.words.length
-            populateGrid()
-        })
-
-    }
-
-
-    useEffect(() => {
-        createGrid()
-    })
-
-    //fetch data
-    useEffect(() => {
-    fetchData()
-    })
+    }, [getKeyCode])
 
     //populate the grid
-    function populateGrid() {
+    const populateGrid = useCallback(() => {
         let j = 0
         for (let i = noOfSquares - gridWidth; i < noOfSquares; i++) {
             cells[i].innerText = targetWords[j]
@@ -79,45 +87,45 @@ export default function Game(props) {
         cells[ranNum].classList.add('active')
         activeWordCurrentPos = ranNum
         go()
-    }
-
-    //start the countdown
-    function go() {
-        let timeLeft = 2
-        const countDownTimer = setInterval(() => {
-            if (timeLeft > 0) {
-                countDown.innerText = timeLeft
-                timeLeft--
-            }
-            else {
-                clearInterval(countDownTimer)
+        //start the countdown
+        function go() {
+            setTimeout(() => {
                 countDown.innerText = ''
                 start()
-            }
+            }, 2000);
 
-        }, 1000)
-    }
+        }
+    }, [])
 
-    //start the drop
+    const fetchData = useCallback(() => {
+        fetch('./data/words.json')
+            .then(response => response.json())
+            .then(data => {
+                wordsToPlay = data.words[set].wordsToPlay
+                function shuffle(array) { // put target words in random order
+                    return array.sort(() => Math.random() - 0.5);
+                }
+                targetWords = shuffle(data.words[set].targetWords)
+                setMax = data.words.length
+                populateGrid()
+            })
+    }, [populateGrid])
+
+
+
+
+
+
+    useEffect(() => {
+        createGrid()
+        fetchData()
+    }, [createGrid, fetchData])
+
     function start() {
-        tileISActive = true
-        const activeWordTimer = setInterval(() => {
-            if (activeWordCurrentPos < noOfSquares - gridWidth * 2) {
-                cells[activeWordCurrentPos].innerText = ""
-                cells[activeWordCurrentPos].classList.remove('active')
-                cells[activeWordCurrentPos + gridWidth].innerText = wordsToPlay[0]
-                cells[activeWordCurrentPos + gridWidth].classList.add('active')
-                activeWordCurrentPos += gridWidth
-            }
-            else {
-                clearInterval(activeWordTimer)
-                tileISActive = false
-                calculatePoints()
-            }
-        }, speed)
+        setTileIsFalling(true)
     }
 
-    function calculatePoints() {
+    const calculatePoints =useCallback(()=>{
         if (wordsToPlay[1] === cells[activeWordCurrentPos + 5].innerText) {
             points++
             if (points % 4 === 0) {
@@ -126,59 +134,105 @@ export default function Game(props) {
             }
             pointsDisplay.innerText = points
             levelDisplay.innerText = level
-            // startNextSet()
+            startNextSet()
         }
         else {
             // game over
+            if (tileIsFalling) {
+                setGameIsOver(true)
+            }
             cells[activeWordCurrentPos].classList.add('wrong')
             setTimeout(() => {
-                document.getElementsByClassName('wrong')[0].classList.remove('wrong')
-                //     endMessageText.innerHTML = `
-                //     <h2 class="end_headline">Game Over!</h2> 
-                //     <p class="intro_text">You should have matched </p> 
-                //     <div class="intro_word"> ${wordsToPlay[0]}</div>
-                //     <div class="intro_text">with </div>
-                //     <div class="intro_word">${wordsToPlay[1]}</div>
-                //     <p class="intro_text">You got ${points} points</p>
-                // `
+                if (document.getElementsByClassName('wrong')[0]) {
+                    document.getElementsByClassName('wrong')[0].classList.remove('wrong')
+                }
 
-                // endMessageDisplay.style.display = 'flex';
-                //     endBtn.innerText = 'Play again?';
-                //     endBtn.addEventListener('click', reset)
-                // reset()
             }, 1000)
+        }
+
+        function startNextSet() {
+            //clearwords
+            cells[activeWordCurrentPos].classList.remove('active')
+            //make tile show success and then remove it
+            cells[activeWordCurrentPos].classList.add('right')
+            setTimeout(() => {
+                if (document.getElementsByClassName('right')[0]) {
+                    document.getElementsByClassName('right')[0].classList.remove('right')
+                }
+            }, 250)
+            cells[activeWordCurrentPos].innerText = ''
+            //get new word
+            set++
+            //restart
+            if (set < setMax) {
+                fetchData()
+                start()
+            }
+            else {
+                //complete victory
+                setVictoryIsYours(true)
+                setGameIsOver(true)
+            }
+        }
+
+    },[tileIsFalling, fetchData])
+
+    useEffect(() => {
+        tileISActive = true
+        const activeWordTimer = setInterval(() => {
+            if (activeWordCurrentPos < noOfSquares - gridWidth * 2 && tileIsFalling) {
+                cells[activeWordCurrentPos].innerText = ""
+                cells[activeWordCurrentPos].classList.remove('active')
+                cells[activeWordCurrentPos + gridWidth].innerText = wordsToPlay[0]
+                cells[activeWordCurrentPos + gridWidth].classList.add('active')
+                activeWordCurrentPos += gridWidth
+            }
+            else {
+                setTileIsFalling(false)
+                clearInterval(activeWordTimer)
+                tileISActive = false
+                calculatePoints()
+            }
+        }, speed)
+        return () => { clearInterval(activeWordTimer) }
+    }, [tileIsFalling, calculatePoints])
 
 
+
+    function controlWord(keyCode) {
+        if (activeWordCurrentPos > noOfSquares - 11) {
+            setTimeout(() => {
+                tileISActive = false
+            }, 300)
+        }
+
+        switch (keyCode) {
+            case 37:
+                if (activeWordCurrentPos - 1 <= 44 && activeWordCurrentPos % 5 !== 0 && tileISActive) {
+                    cells[activeWordCurrentPos].classList.remove('active')
+                    cells[activeWordCurrentPos].innerText = ''
+                    cells[activeWordCurrentPos - 1].innerText = wordsToPlay[0]
+                    cells[activeWordCurrentPos - 1].classList.add('active')
+                    activeWordCurrentPos -= 1
+                }
+                break
+            case 39:
+                if (activeWordCurrentPos + 1 <= 44 && (activeWordCurrentPos + 1) % 5 !== 0 && tileISActive) {
+                    cells[activeWordCurrentPos].classList.remove('active')
+                    cells[activeWordCurrentPos].innerText = ''
+                    cells[activeWordCurrentPos + 1].innerText = wordsToPlay[0]
+                    cells[activeWordCurrentPos + 1].classList.add('active')
+                    activeWordCurrentPos += 1
+                }
+                break
         }
     }
 
-    function startNextSet() {
-        //clearwords
-        cells[activeWordCurrentPos].classList.remove('active')
-        //make tile show success and then remove it
-        cells[activeWordCurrentPos].classList.add('right')
-        setTimeout(() => {
-            document.getElementsByClassName('right')[0].classList.remove('right')
-        }, 250)
-        cells[activeWordCurrentPos].innerText = ''
-        //get new word
-        set++
-        //restart
-        if (set < setMax) {
-            // fetchData()
-            start()
-        }
-        else {
-            // endMessageText.innerHTML = `<h2 class="end_win">Game Over! You win with ${points} points!</h2>`
-            // endMessageDisplay.style.display = 'flex';
-            // endBtn.innerText = 'Play again?';
-            // endBtn.addEventListener('click', reset)
-            // reset()
-        }
-    }
+
+
+
 
     function reset() {
-        // endMessageDisplay.style.display = 'none'
         cells[activeWordCurrentPos].classList.remove('active')
         cells[activeWordCurrentPos].innerText = ''
         set = 0
@@ -205,9 +259,16 @@ export default function Game(props) {
                 </div>
             </div>
             <div className="grid">
-                <div className="count-down">3</div>
+                <div className="count-down">Ready!</div>
             </div>
-            <div className="end-message">g</div>
+            {gameIsOver ?
+                <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
+                </div> : null}
+
+            <div className="buttons-container">
+                <DirectionBtns id="left" className="direction-button" data-key-code="37"></DirectionBtns>
+                <DirectionBtns id="right" className="direction-button" data-key-code="39"></DirectionBtns>
+            </div>
             {/* <NavigationBlock setComponentToDisplay={props.setComponentToDisplay} /> */}
         </GameContainer>
     )
