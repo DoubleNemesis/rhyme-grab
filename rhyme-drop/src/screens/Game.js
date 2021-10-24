@@ -12,14 +12,15 @@ let set = 0
 let wordsToPlay = []
 let activeWordCurrentPos = 0
 let countDown
-let speed = 2000
+let speed = 1000
 let tileISActive = false
 let points = 0
 let level = 1
 let pointsDisplay
 let levelDisplay
 let directionBtns
-const originalSpeed = 500
+let countDownMessage = `Ready!`
+const originalSpeed = 1000
 const originalevel = 1
 
 
@@ -28,6 +29,7 @@ export default function Game(props) {
     const [tileIsFalling, setTileIsFalling] = useState(false)
     const [gameIsOver, setGameIsOver] = useState(false)
     const [victoryIsYours, setVictoryIsYours] = useState(false)
+    const [restart, setRestart] = useState(false)
 
     const GameOverMessage = () => {
         return (
@@ -58,7 +60,10 @@ export default function Game(props) {
 
 
     const createGrid = useCallback(() => {
+        console.log('creategrid');
+        cells.length = 0
         grid = document.getElementsByClassName('grid')[0]
+        grid.innerText = null
         countDown = document.getElementsByClassName('count-down')[0]
         pointsDisplay = document.getElementsByClassName('points')[0]
         levelDisplay = document.getElementsByClassName('level')[0]
@@ -74,6 +79,7 @@ export default function Game(props) {
             grid.appendChild(cell)
             cells.push(cell)
         }
+        console.log(cells)
     }, [getKeyCode])
 
     //populate the grid
@@ -95,7 +101,6 @@ export default function Game(props) {
                 countDown.innerText = ''
                 start()
             }, 2000);
-
         }
     }, [])
 
@@ -114,20 +119,41 @@ export default function Game(props) {
     }, [populateGrid])
 
 
+    const reset = useCallback(()=> {
+        console.log(tileIsFalling);
+        // if(tileIsFalling){
+            console.log('rst');
+            cells[activeWordCurrentPos].classList.remove('active')
+            cells[activeWordCurrentPos].innerText = ''
+            set = 0
+            points = 0
+            level = originalevel
+            levelDisplay.innerText = level
+            speed = originalSpeed
+            pointsDisplay.innerText = 0
+            setTileIsFalling(false)
+            countDown.innerText = countDownMessage
+        // }
 
+    },[tileIsFalling])
 
-
+    useEffect(()=>{
+        if(gameIsOver){
+            reset()
+        }
+    },[gameIsOver, reset])
 
     useEffect(() => {
         createGrid()
         fetchData()
+        setGameIsOver(false)
     }, [createGrid, fetchData])
 
     function start() {
         setTileIsFalling(true)
     }
 
-    const calculatePoints =useCallback(()=>{
+    const calculatePoints = useCallback(()=>{
         if (wordsToPlay[1] === cells[activeWordCurrentPos + 5].innerText) {
             points++
             if (points % 4 === 0) {
@@ -230,21 +256,17 @@ export default function Game(props) {
         }
     }
 
-
-
-
-
-    function reset() {
-        cells[activeWordCurrentPos].classList.remove('active')
-        cells[activeWordCurrentPos].innerText = ''
-        set = 0
-        points = 0
-        level = originalevel
-        levelDisplay.innerText = level
-        speed = originalSpeed
+    function doRestart(){
+        setRestart(true)
+        setGameIsOver(false)
+        createGrid()
         fetchData()
-        pointsDisplay.innerText = 0
     }
+
+    useEffect(()=>{
+        setRestart(false)
+    },[restart])
+
 
     return (
         <GameContainer>
@@ -260,12 +282,11 @@ export default function Game(props) {
                     </div>
                 </div>
             </div>
-            <div className="grid">
+            <div className="grid"></div>
                 <div className="count-down">Ready!</div>
-            </div>
             {gameIsOver ?
                 <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
-                    <EndButtons setComponentToDisplay={props.setComponentToDisplay} />
+                    <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart}/>
                 </div> : null}
 
             <div className="buttons-container">

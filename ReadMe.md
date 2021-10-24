@@ -15,7 +15,7 @@ Game Play:
 To Do:
     iPhone 5???
     wire up levels of difficulty
-    wire up end game buttons to !!!reset and reload or reset homepage? check Main.js state
+   pause to show red wrong answer before bringing up the end screen just foir ux
 
     speedy downshift and record time?
     lives?
