@@ -5,6 +5,24 @@ import BulletR from '../../images/bulletR.png'
 export const GameContainer = styled.div`
 position: relative;
 
+@keyframes rightAnim {
+    0% {
+      background-color: yellow;
+    }
+    100% {
+      background-color: limegreen;
+    }
+  }
+
+@keyframes wrongAnim {
+    0% {
+      background-color: red;
+    }
+    100%{
+        background-color: orange;
+    }
+  }
+
 .cell{
     width: 20%;
     height: 6vh;
@@ -19,6 +37,33 @@ position: relative;
         width: 100px; 
         height: 45px; 
     }
+}
+
+.active{
+    background-color: dodgerblue;
+    border: 3px solid skyblue;
+    color: white;
+    border-radius: 2px;
+}
+
+.target-word{
+    background-color: #f30b7b;
+    border: 1px solid #666;
+    color: white;
+}
+
+.active, .target-word{
+    font-size: 90%;
+}
+
+.right{
+    animation: rightAnim .15s infinite;
+    background-color: limegreen;
+}
+
+.wrong{
+    animation: wrongAnim .25s reverse infinite;
+    background-color: limegreen;
 }
 
 .grid{
@@ -94,6 +139,7 @@ position: relative;
 
 .end-message{
     position: absolute;
+    display: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -103,6 +149,7 @@ position: relative;
     flex-direction: column;
     text-align: center;
     padding: 2rem;
+    border: 2px solid #f30b7b;
     
     @media(min-width: 700px){
             width: 50%;
@@ -181,4 +228,7 @@ background-position-x: center;
 background-color: transparent;
 border: 1px solid skyblue;
 padding: 1rem;
+:active{
+    filter: brightness(20%);
+}
 `

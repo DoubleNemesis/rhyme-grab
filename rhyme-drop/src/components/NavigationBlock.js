@@ -2,13 +2,15 @@ import styled from 'styled-components'
 import { ReactComponent as Cog } from '../images/cog.svg'
 import { ReactComponent as Information } from '../images/information.svg'
 
-const ButtonsContainer = styled.div`
+export const ButtonsContainer = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-width: 80%;
+width: ${({width})=> width || ' 80%'};
+gap: ${({gap})=> gap || null};
+margin: ${({margin})=> margin || '0'};
 `
-const Button = styled.button`
+export const Button = styled.button`
 padding: .5rem 1rem;
 border: 2px solid ${({ borderColor }) => borderColor};
 border-radius: 0;

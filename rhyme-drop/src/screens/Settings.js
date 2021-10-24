@@ -79,9 +79,9 @@ export default function Settings(props) {
 
     useEffect(()=>{
         setLevelValue(
-            sliderValue === 1 ? `I'm a clown: go easy on me!` :
-                sliderValue === 2 ? `I'm a nerd: I'm pretty good!` :
-                    sliderValue === 3 ? `I'm the Boss: Give me EVERYTHING!` : 'null'
+            sliderValue === 1 ? `Clown` :
+                sliderValue === 2 ? `Average` :
+                    sliderValue === 3 ? `Boss` : 'null'
         )
     },[sliderValue])
 

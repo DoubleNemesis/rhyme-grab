@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { GameContainer, DirectionBtns } from './gameComponents/GameComponents'
+import EndButtons from '../components/EndButtons'
 
 const noOfSquares = 50
 let grid
@@ -11,7 +12,7 @@ let set = 0
 let wordsToPlay = []
 let activeWordCurrentPos = 0
 let countDown
-let speed = 500
+let speed = 2000
 let tileISActive = false
 let points = 0
 let level = 1
@@ -22,7 +23,7 @@ const originalSpeed = 500
 const originalevel = 1
 
 
-export default function Game() {
+export default function Game(props) {
 
     const [tileIsFalling, setTileIsFalling] = useState(false)
     const [gameIsOver, setGameIsOver] = useState(false)
@@ -80,6 +81,7 @@ export default function Game() {
         let j = 0
         for (let i = noOfSquares - gridWidth; i < noOfSquares; i++) {
             cells[i].innerText = targetWords[j]
+            cells[i].classList.add('target-word')
             j++
         }
         const ranNum = Math.floor(Math.random() * 5)
@@ -263,6 +265,7 @@ export default function Game() {
             </div>
             {gameIsOver ?
                 <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
+                    <EndButtons setComponentToDisplay={props.setComponentToDisplay} />
                 </div> : null}
 
             <div className="buttons-container">
