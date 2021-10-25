@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { GameContainer, DirectionBtns, CountDownMessage } from './gameComponents/GameComponents'
 import EndButtons from '../components/EndButtons'
 import TrophySmall from '../images/trophySmall.png'
+import Clown from '../images/clown1.png'
+import Nerd from '../images/nerd.png'
+import Sunglasses from '../images/sunglasses.png'
 
 const noOfSquares = 50
 let grid
@@ -32,14 +35,10 @@ export default function Game(props) {
     const [restart, setRestart] = useState(false)
     const [victoryPoints, setVictoryPoints] = useState(0)
 
-    useEffect(()=>{
+    useEffect(() => {
         speed = props.speedValue
         originalSpeed = props.speedValue
-    },[props.speedValue])
-
-
-    console.log(speed)
-
+    }, [props.speedValue])
 
     const GameOverMessage = () => {
         return (
@@ -57,8 +56,8 @@ export default function Game(props) {
     const VictoryMessage = () => {
         return (
             <>
-            <h2><img src={TrophySmall} width="55px"/></h2> 
-            <h2 className="end_win">You win with {victoryPoints} points!</h2>
+                <h2><img src={TrophySmall} width="55px" alt="trophy emoji" /></h2>
+                <h2 className="end_win">You win with {victoryPoints} points!</h2>
             </>
         )
     }
@@ -90,13 +89,13 @@ export default function Game(props) {
 
 
 
-    useEffect(()=>{
+    useEffect(() => {
         document.addEventListener('keydown', assignMoveKeys) //desktop only
         function assignMoveKeys(e) {
             const keyCode = e.keyCode
             controlWord(keyCode)
         }
-    },[])
+    }, [])
 
 
 
@@ -137,27 +136,27 @@ export default function Game(props) {
     }, [populateGrid])
 
 
-    const reset = useCallback(()=> {
+    const reset = useCallback(() => {
         // if(tileIsFalling){
-            cells[activeWordCurrentPos].classList.remove('active')
-            cells[activeWordCurrentPos].innerText = ''
-            set = 0
-            points = 0
-            level = originalevel
-            levelDisplay.innerText = level
-            speed = originalSpeed
-            pointsDisplay.innerText = 0
-            setTileIsFalling(false)
-            countDownMessage = 'Get Ready'
+        cells[activeWordCurrentPos].classList.remove('active')
+        cells[activeWordCurrentPos].innerText = ''
+        set = 0
+        points = 0
+        level = originalevel
+        levelDisplay.innerText = level
+        speed = originalSpeed
+        pointsDisplay.innerText = 0
+        setTileIsFalling(false)
+        countDownMessage = 'Get Ready'
         // }
 
-    },[])
+    }, [])
 
-    useEffect(()=>{
-        if(gameIsOver){
+    useEffect(() => {
+        if (gameIsOver) {
             reset()
         }
-    },[gameIsOver, reset])
+    }, [gameIsOver, reset])
 
     useEffect(() => {
         createGrid()
@@ -169,7 +168,7 @@ export default function Game(props) {
         setTileIsFalling(true)
     }
 
-    const calculatePoints = useCallback(()=>{
+    const calculatePoints = useCallback(() => {
         if (wordsToPlay[1] === cells[activeWordCurrentPos + 5].innerText) {
             points++
             if (points % 4 === 0) {
@@ -183,9 +182,9 @@ export default function Game(props) {
         else {
             // game over
             if (tileIsFalling) {
-                setTimeout(()=>{
+                setTimeout(() => {
                     setGameIsOver(true) //delay in bringing up end screen
-                },1500)
+                }, 1500)
             }
             cells[activeWordCurrentPos].classList.add('wrong')
             setTimeout(() => {
@@ -196,33 +195,36 @@ export default function Game(props) {
         }
 
         function startNextSet() {
-            //clearwords
-            cells[activeWordCurrentPos].classList.remove('active')
-            //make tile show success and then remove it
-            cells[activeWordCurrentPos].classList.add('right')
-            setTimeout(() => {
-                if (document.getElementsByClassName('right')[0]) {
-                    document.getElementsByClassName('right')[0].classList.remove('right')
+            if (!gameIsOver) {
+                //clearwords
+                console.log('next set');
+                cells[activeWordCurrentPos].classList.remove('active')
+                //make tile show success and then remove it
+                cells[activeWordCurrentPos].classList.add('right')
+                setTimeout(() => {
+                    if (document.getElementsByClassName('right')[0]) {
+                        document.getElementsByClassName('right')[0].classList.remove('right')
+                    }
+                }, 250)
+                //get new word
+                set++
+                //restart
+                if (set < setMax) {
+                    cells[activeWordCurrentPos].innerText = ''
+                    fetchData()
+                    start()
                 }
-            }, 250)
-            cells[activeWordCurrentPos].innerText = ''
-            //get new word
-            set++
-            //restart
-            if (set < setMax) {
-                fetchData()
-                start()
-            }
-            else {
-                //complete victory
-                set = 0
-                setVictoryPoints(points)
-                setVictoryIsYours(true)
-                setGameIsOver(true)
+                else {
+                    //complete victory
+                    set = 0
+                    setVictoryPoints(points)
+                    setVictoryIsYours(true)
+                    setGameIsOver(true)
+                }
             }
         }
 
-    },[tileIsFalling, fetchData])
+    }, [tileIsFalling, fetchData, gameIsOver])
 
     useEffect(() => {
         tileISActive = true
@@ -247,11 +249,10 @@ export default function Game(props) {
 
 
     function controlWord(keyCode) {
-        console.log(keyCode);
         if (activeWordCurrentPos > noOfSquares - 11) {
-            setTimeout(() => {
-                tileISActive = false
-            }, 300)
+            // setTimeout(() => {
+            tileISActive = false
+            // }, 10)
         }
 
         switch (keyCode) {
@@ -273,21 +274,20 @@ export default function Game(props) {
                     activeWordCurrentPos += 1
                 }
                 break
-                default: return
+            default: return
         }
     }
 
-    function doRestart(){
+    function doRestart() {
         setRestart(true)
         setGameIsOver(false)
         createGrid()
         fetchData()
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setRestart(false)
-    },[restart])
-
+    }, [restart])
 
     return (
         <GameContainer>
@@ -298,16 +298,25 @@ export default function Game(props) {
                         <div className="points">0</div>
                     </div>
                     <div className="points-area-cluster">
+                        <div className="points-area-emoji">
+                            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" />:
+                            props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" />:
+                            props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
+                            }
+                        </div>
+
+                    </div>
+                    <div className="points-area-cluster">
                         <div className="points-area-label">Level:</div>
                         <div className="level">1</div>
                     </div>
                 </div>
             </div>
             <div className="grid"></div>
-                <div className="count-down"><CountDownMessage>{countDownMessage}</CountDownMessage></div>
+            <div className="count-down"><CountDownMessage>{countDownMessage}</CountDownMessage></div>
             {gameIsOver ?
                 <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
-                    <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart}/>
+                    <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart} />
                 </div> : null}
 
             <div className="buttons-container">

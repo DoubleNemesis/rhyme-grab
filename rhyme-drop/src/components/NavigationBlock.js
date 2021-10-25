@@ -10,13 +10,14 @@ width: ${({width})=> width || ' 80%'};
 gap: ${({gap})=> gap || null};
 margin: ${({margin})=> margin || '0'};
 
+
 @media(min-width: 700px){
 width: 80%;
 padding: 2rem;
 }
 
 @media(min-width: 1025px){
-width: 25%;
+width: ${({width})=> width || ' 25%'};
 padding: 0 2rem 0 2rem;
 }
 `
@@ -45,7 +46,7 @@ svg {
 
 export default function NavigationBlock(props) {
     return (
-        <ButtonsContainer>
+        <ButtonsContainer width={props.width}>
             <Button borderColor="skyblue" color="#f30b7b" onClick={() => props.setComponentToDisplay('game')}>Play</Button>
             <Button borderColor="#f30b7b" color="skyblue" onClick={() => props.setComponentToDisplay('instructions')}><Information/></Button>
             <Button borderColor="#f30b7b" color="skyblue" onClick={() => props.setComponentToDisplay('settings')}><Cog /></Button>

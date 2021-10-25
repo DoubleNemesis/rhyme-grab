@@ -13,7 +13,7 @@ Game Play:
     if not, it's game over
 
 To Do:
-    wire up keyboard
+    left.right keys on instructions
 
 
 

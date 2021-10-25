@@ -11,7 +11,7 @@ line-height: 40px;
 
 
 @media(min-width: 700px){
-    font-size: 1.5rem;
+    font-size: ${({fontSize})=>fontSize || '1.5rem'} ;
     padding: .5rem;
 }
 

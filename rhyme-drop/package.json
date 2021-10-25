@@ -1,5 +1,6 @@
 {
   "name": "rhyme-drop",
+  "homepage":"https://tomsclassroom.com/rhymedrop/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -132,6 +132,13 @@ position: relative;
     display: flex;
 }
 
+.points-area-emoji{
+    img{
+        max-width: 25px;
+    }
+
+}
+
 .count-down{
     position: absolute;
     top: 50%;

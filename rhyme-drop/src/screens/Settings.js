@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import NavigationBlock from '../components/NavigationBlock'
 import MainContainer from '../components/MainContainer'
@@ -88,36 +88,36 @@ font-size: 2rem;
 
 export default function Settings(props) {
 
-    const [sliderValue, setSliderValue] = useState(2)
-    const [levelValue, setLevelValue] = useState('Average')
+    // const [sliderValue, setSliderValue] = useState(2)
+    // const [levelValue, setLevelValue] = useState('Average')
 
     function handleSliderChange(e) {
-        setSliderValue(parseInt(e.target.value))
+        props.setSliderValue(parseInt(e.target.value))
     }
 
     useEffect(() => {
-        setLevelValue(
-            sliderValue === 1 ? `Clown` :
-                sliderValue === 2 ? `Average` :
-                    sliderValue === 3 ? `Boss` : 'null'
+        props.setLevelValue(
+            props.sliderValue === 1 ? `Clown` :
+                props.sliderValue === 2 ? `Average` :
+                    props.sliderValue === 3 ? `Boss` : 'null'
         )
         props.setSpeedValue(
-            sliderValue === 1 ? 1000 :
-                sliderValue === 2 ? 750 : // must be same as default value
-                    sliderValue === 3 ? 500 : null
+            props.sliderValue === 1 ? 1000 :
+                props.sliderValue === 2 ? 750 : // must be same as default value
+                    props.sliderValue === 3 ? 500 : null
         )
-    }, [sliderValue, props])
+    }, [props])
 
 
 
     return (
         <MainContainer>
             <H1Large>Choose Difficulty</H1Large>
-            <P> {levelValue}</P>
+            <P> {props.levelValue}</P>
 
             <Slider>
                 <label><div className="labels"><img src={Clown} alt="clown emoji" /><img src={Nerd} alt="nerd emoji" /><img src={Sunglasses} alt="sunglasses emoji" /></div>
-                    <input type="range" min="1" max="3" value={sliderValue} className="slider" id="myRange" onChange={handleSliderChange} />
+                    <input type="range" min="1" max="3" value={props.sliderValue} className="slider" id="myRange" onChange={handleSliderChange} />
                     <div className="labels"><p>slow</p><p>fast</p></div>
                 </label>
             </Slider>
