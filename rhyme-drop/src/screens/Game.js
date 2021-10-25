@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { GameContainer, DirectionBtns, CountDownMessage } from './gameComponents/GameComponents'
 import EndButtons from '../components/EndButtons'
+import TrophySmall from '../images/trophySmall.png'
 
 const noOfSquares = 50
 let grid
@@ -56,7 +57,7 @@ export default function Game(props) {
     const VictoryMessage = () => {
         return (
             <>
-            <h2 className="end_win">Game Over!</h2> 
+            <h2><img src={TrophySmall} width="55px"/></h2> 
             <h2 className="end_win">You win with {victoryPoints} points!</h2>
             </>
         )
@@ -68,7 +69,6 @@ export default function Game(props) {
     }, [])
 
     const createGrid = useCallback(() => {
-        console.log('creategrid');
         cells.length = 0
         grid = document.getElementsByClassName('grid')[0]
         grid.innerText = null
@@ -86,7 +86,6 @@ export default function Game(props) {
             grid.appendChild(cell)
             cells.push(cell)
         }
-        console.log(cells)
     }, [getKeyCode])
 
 
@@ -94,7 +93,6 @@ export default function Game(props) {
     useEffect(()=>{
         document.addEventListener('keydown', assignMoveKeys) //desktop only
         function assignMoveKeys(e) {
-            console.log('i happened');
             const keyCode = e.keyCode
             controlWord(keyCode)
         }
@@ -140,9 +138,7 @@ export default function Game(props) {
 
 
     const reset = useCallback(()=> {
-        console.log(tileIsFalling);
         // if(tileIsFalling){
-            console.log('rst');
             cells[activeWordCurrentPos].classList.remove('active')
             cells[activeWordCurrentPos].innerText = ''
             set = 0
@@ -155,7 +151,7 @@ export default function Game(props) {
             countDownMessage = 'Get Ready'
         // }
 
-    },[tileIsFalling])
+    },[])
 
     useEffect(()=>{
         if(gameIsOver){
@@ -219,6 +215,7 @@ export default function Game(props) {
             }
             else {
                 //complete victory
+                set = 0
                 setVictoryPoints(points)
                 setVictoryIsYours(true)
                 setGameIsOver(true)
