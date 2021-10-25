@@ -1,4 +1,4 @@
-import Container from './layout/Container'
+import AppContainer from './layout/AppContainer'
 import Header from './layout/Header'
 import Main from './layout/Main'
 import Footer from './layout/Footer'
@@ -7,11 +7,11 @@ import Footer from './layout/Footer'
 function App() {
   return (
     <>
-      <Container>
+      <AppContainer>
         <Header />
         <Main />
         <Footer />
-      </Container>
+      </AppContainer>
     </>
   );
 }

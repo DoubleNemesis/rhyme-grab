@@ -23,7 +23,7 @@ const StyledLogo = styled.img`
 export default function Header() {
     return (
         <HeaderContainer>
-            <a href="/"><StyledLogo src={Logo} /></a>
+            <a href="/rhymedrop"><StyledLogo src={Logo} /></a>
         </HeaderContainer>
     )
 }
