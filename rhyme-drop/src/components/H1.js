@@ -8,6 +8,13 @@ text-align: center;
 font-weight: 400;
 color: skyblue;
 line-height: 40px;
+
+
+@media(min-width: 700px){
+    font-size: 1.5rem;
+    padding: .5rem;
+}
+
 `
 
 export default H1

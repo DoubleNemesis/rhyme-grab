@@ -9,6 +9,16 @@ justify-content: space-between;
 width: ${({width})=> width || ' 80%'};
 gap: ${({gap})=> gap || null};
 margin: ${({margin})=> margin || '0'};
+
+@media(min-width: 700px){
+width: 80%;
+padding: 2rem;
+}
+
+@media(min-width: 1025px){
+width: 25%;
+padding: 0 2rem 0 2rem;
+}
 `
 export const Button = styled.button`
 padding: .5rem 1rem;
@@ -44,3 +54,20 @@ export default function NavigationBlock(props) {
     )
 }
 
+export const ButtonsContainerEnd = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: ${({width})=> width || ' 80%'};
+gap: ${({gap})=> gap || null};
+margin: ${({margin})=> margin || '0'};
+
+@media(min-width: 700px){
+width: 80%;
+padding: 2rem;
+}
+
+@media(min-width: 1025px){
+padding: 0 2rem 0 2rem;
+}
+`

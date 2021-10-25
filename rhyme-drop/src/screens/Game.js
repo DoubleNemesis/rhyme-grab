@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { GameContainer, DirectionBtns } from './gameComponents/GameComponents'
+import { GameContainer, DirectionBtns, CountDownMessage } from './gameComponents/GameComponents'
 import EndButtons from '../components/EndButtons'
 
 const noOfSquares = 50
@@ -11,16 +11,15 @@ let setMax = 0
 let set = 0
 let wordsToPlay = []
 let activeWordCurrentPos = 0
-let countDown
-let speed = 1000
 let tileISActive = false
 let points = 0
 let level = 1
 let pointsDisplay
 let levelDisplay
 let directionBtns
-let countDownMessage = `Ready!`
-const originalSpeed = 1000
+let countDownMessage = `Get Ready`
+let speed = 750 // default value from settings.js
+let originalSpeed = 750 // default value from settings.js
 const originalevel = 1
 
 
@@ -30,6 +29,16 @@ export default function Game(props) {
     const [gameIsOver, setGameIsOver] = useState(false)
     const [victoryIsYours, setVictoryIsYours] = useState(false)
     const [restart, setRestart] = useState(false)
+    const [victoryPoints, setVictoryPoints] = useState(0)
+
+    useEffect(()=>{
+        speed = props.speedValue
+        originalSpeed = props.speedValue
+    },[props.speedValue])
+
+
+    console.log(speed)
+
 
     const GameOverMessage = () => {
         return (
@@ -48,7 +57,7 @@ export default function Game(props) {
         return (
             <>
             <h2 className="end_win">Game Over!</h2> 
-            <h2 className="end_win">You win with {points} points!</h2>
+            <h2 className="end_win">You win with {victoryPoints} points!</h2>
             </>
         )
     }
@@ -58,13 +67,11 @@ export default function Game(props) {
         controlWord(keyCode)
     }, [])
 
-
     const createGrid = useCallback(() => {
         console.log('creategrid');
         cells.length = 0
         grid = document.getElementsByClassName('grid')[0]
         grid.innerText = null
-        countDown = document.getElementsByClassName('count-down')[0]
         pointsDisplay = document.getElementsByClassName('points')[0]
         levelDisplay = document.getElementsByClassName('level')[0]
         directionBtns = document.querySelectorAll('.direction-button')
@@ -82,6 +89,19 @@ export default function Game(props) {
         console.log(cells)
     }, [getKeyCode])
 
+
+
+    useEffect(()=>{
+        document.addEventListener('keydown', assignMoveKeys) //desktop only
+        function assignMoveKeys(e) {
+            console.log('i happened');
+            const keyCode = e.keyCode
+            controlWord(keyCode)
+        }
+    },[])
+
+
+
     //populate the grid
     const populateGrid = useCallback(() => {
         let j = 0
@@ -98,7 +118,7 @@ export default function Game(props) {
         //start the countdown
         function go() {
             setTimeout(() => {
-                countDown.innerText = ''
+                countDownMessage = ''
                 start()
             }, 2000);
         }
@@ -132,7 +152,7 @@ export default function Game(props) {
             speed = originalSpeed
             pointsDisplay.innerText = 0
             setTileIsFalling(false)
-            countDown.innerText = countDownMessage
+            countDownMessage = 'Get Ready'
         // }
 
     },[tileIsFalling])
@@ -167,14 +187,15 @@ export default function Game(props) {
         else {
             // game over
             if (tileIsFalling) {
-                setGameIsOver(true)
+                setTimeout(()=>{
+                    setGameIsOver(true) //delay in bringing up end screen
+                },1500)
             }
             cells[activeWordCurrentPos].classList.add('wrong')
             setTimeout(() => {
                 if (document.getElementsByClassName('wrong')[0]) {
                     document.getElementsByClassName('wrong')[0].classList.remove('wrong')
                 }
-
             }, 1000)
         }
 
@@ -198,6 +219,7 @@ export default function Game(props) {
             }
             else {
                 //complete victory
+                setVictoryPoints(points)
                 setVictoryIsYours(true)
                 setGameIsOver(true)
             }
@@ -228,6 +250,7 @@ export default function Game(props) {
 
 
     function controlWord(keyCode) {
+        console.log(keyCode);
         if (activeWordCurrentPos > noOfSquares - 11) {
             setTimeout(() => {
                 tileISActive = false
@@ -253,6 +276,7 @@ export default function Game(props) {
                     activeWordCurrentPos += 1
                 }
                 break
+                default: return
         }
     }
 
@@ -283,7 +307,7 @@ export default function Game(props) {
                 </div>
             </div>
             <div className="grid"></div>
-                <div className="count-down">Ready!</div>
+                <div className="count-down"><CountDownMessage>{countDownMessage}</CountDownMessage></div>
             {gameIsOver ?
                 <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
                     <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart}/>
@@ -293,7 +317,6 @@ export default function Game(props) {
                 <DirectionBtns id="left" className="direction-button" data-key-code="37"></DirectionBtns>
                 <DirectionBtns id="right" className="direction-button" data-key-code="39"></DirectionBtns>
             </div>
-            {/* <NavigationBlock setComponentToDisplay={props.setComponentToDisplay} /> */}
         </GameContainer>
     )
 }

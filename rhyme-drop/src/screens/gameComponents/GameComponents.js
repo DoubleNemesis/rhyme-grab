@@ -8,18 +8,22 @@ position: relative;
 @keyframes rightAnim {
     0% {
       background-color: yellow;
+      border: 3px solid skyblue;
     }
     100% {
       background-color: limegreen;
+      border: 3px solid yellow;
     }
   }
 
 @keyframes wrongAnim {
     0% {
       background-color: red;
+      border: 3px solid orange;
     }
     100%{
         background-color: orange;
+        border: 3px solid red;
     }
   }
 
@@ -77,6 +81,7 @@ position: relative;
     @media(min-width:700px){
         width: 500px; 
         height: 450px; 
+        margin: 0 auto;
     }
 }
 
@@ -93,6 +98,8 @@ position: relative;
         border: 3px solid skyblue;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
+        width: 500px;
+        margin: 0 auto;
     } 
 }
 
@@ -128,13 +135,9 @@ position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
+    width: 40%;
     text-align: center;
-    font-size: 20px;
-    color: red;
-    background-color: black;
     opacity: 1;
-    text-transform: uppercase;
 }
 
 .end-message{
@@ -154,7 +157,7 @@ position: relative;
             width: 50%;
             /* height: 60%; */
             border: 3px solid #f30b7b;
-            padding: 4em 2em 4em 2em;
+            padding: 2em 2em 2em 2em;
             border-radius: 5px;
             box-shadow: 3px 3px 3px 3px #333;
     }
@@ -216,18 +219,39 @@ h2.end_win{
 }
 `
 export const DirectionBtns = styled.button`
-background-image: url(
-    ${({ id }) => id === 'left' ? BulletL : BulletR}
-    );
-width: 20vw;
-height: 10vw;
-background-repeat: no-repeat;
-background-size: contain;
-background-position-x: center;
-background-color: transparent;
-border: 1px solid skyblue;
-padding: 1rem;
-:active{
-    filter: brightness(20%);
-}
+    background-image: url(
+        ${({ id }) => id === 'left' ? BulletL : BulletR}
+        );
+    width: 20vw;
+    height: 10vw;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-color: transparent;
+    border: 1px solid skyblue;
+    padding: 1rem;
+        :active{
+            filter: brightness(20%);
+        }
+
+        @media(min-width:700px){
+            width: 15vw;
+            height: 7.5vw;
+    }
 `
+const CountDownH2 = styled.h2`
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Montserrat';
+    color: #f30b7b;
+    text-transform: uppercase;
+    text-align: center;
+
+    @media(min-width:700px){
+        font-size: 50px;
+    }
+`
+
+export const CountDownMessage = ({children})=>{
+    return <CountDownH2>{children}</CountDownH2>
+}

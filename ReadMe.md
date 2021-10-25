@@ -13,9 +13,9 @@ Game Play:
     if not, it's game over
 
 To Do:
-    iPhone 5???
-    wire up levels of difficulty
-   pause to show red wrong answer before bringing up the end screen just foir ux
+    wire up keyboard
+
+
 
     speedy downshift and record time?
     lives?

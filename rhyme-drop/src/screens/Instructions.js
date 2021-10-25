@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import NavigationBlock from '../components/NavigationBlock'
 import MainContainer from '../components/MainContainer'
-import H1 from '../components/H1'
+import H1Large from '../components/H1Large'
 import Bullet from '../images/bullet.png'
 
 const Ul = styled.ul`
@@ -9,12 +9,15 @@ const Ul = styled.ul`
     font-size: .9rem;
     list-style-image: url(${Bullet});
     font-weight: 300;
-    margin-right: 1rem;
+    margin: 0 2rem 1rem 1rem;
 
 li{
     margin-bottom: 10px;
 }
 
+@media(min-width:700px){
+    font-size: 1.3rem;
+}
 @media(min-width:1025px){
     li.mobile-only{
     display: none;
@@ -26,22 +29,13 @@ li{
 }
 }
 
-
-
-
-
-
-
 `
 
-
-
-//<img src="images/lArr.png" alt="controlling arrow" class="arrow-img"> <img src="images/rArr.png" alt="controlling arrow" class="arrow-img">
 
 export default function Instructions(props) {
     return (
         <MainContainer>
-            <H1>How to Play</H1>
+            <H1Large>How to Play</H1Large>
                 <Ul>
                     <li className="desktop-only">Use  to guide the falling word.</li>
                         <li className="mobile-only">Tap the left/right half of the screen to control the falling word.</li>

@@ -13,14 +13,15 @@ width: 100%;
 export default function Main() {
 
 const [componentToDisplay, setComponentToDisplay] = useState('openings')
+const [speedValue, setSpeedValue] = useState(750)
 
 
     return (
         <MainContainer>
             {componentToDisplay === 'openings' ? <Openings setComponentToDisplay={setComponentToDisplay} /> :
             componentToDisplay=== 'instructions' ?  <Instructions setComponentToDisplay={setComponentToDisplay} /> :
-            componentToDisplay=== 'settings' ?  <Settings setComponentToDisplay={setComponentToDisplay} /> :
-            componentToDisplay === 'game' ? <Game setComponentToDisplay={setComponentToDisplay}/> : null
+            componentToDisplay=== 'settings' ?  <Settings setComponentToDisplay={setComponentToDisplay} setSpeedValue={setSpeedValue} /> :
+            componentToDisplay === 'game' ? <Game setComponentToDisplay={setComponentToDisplay} speedValue={speedValue}/> : null
          }
             
            

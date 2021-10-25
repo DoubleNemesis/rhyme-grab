@@ -18,6 +18,15 @@ const StyledImage = styled.img`
 margin: 0 auto;
 width: 90%;
 padding: 1rem;
+
+@media(min-width: 700px){
+width: 80%;
+padding: 2rem;
+}
+@media(min-width: 1025px){
+width: 25%;
+padding: 2rem;
+}
 `
 
 const IconContainer = styled.div`
@@ -36,17 +45,13 @@ const SettingsMessage = () => <IconContainer><Information/> for instructions <Co
 export default function Openings(props) {
 
     const [message, setMessage] = useState('Move the word left or right as it drops...')
-    // const [message, setMessage] = useState(SettingsMessage)
-    
-    
-    const messageArray = [
-        `Move the word left or right as it drops...`,
-        `so it lands on the word it rhymes with.`, 
-        SettingsMessage
-    ]
-
 
     useEffect(() => {
+        const messageArray = [
+            `Move the word left or right as it drops...`,
+            `so it lands on the word it rhymes with.`, 
+            SettingsMessage
+        ]
         let index = 1
         const messageTimer = setInterval(() => {
             setMessage(messageArray[index])
