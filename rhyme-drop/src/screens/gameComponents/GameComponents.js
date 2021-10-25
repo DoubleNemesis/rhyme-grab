@@ -12,7 +12,7 @@ position: relative;
     }
     100% {
       background-color: limegreen;
-      border: 3px solid yellow;
+      border: 3px solid chartreuse;
     }
   }
 
@@ -45,6 +45,7 @@ position: relative;
 
 .active{
     background-color: dodgerblue;
+    background-image: linear-gradient(140deg, white 0%, dodgerblue 50%);
     border: 3px solid skyblue;
     color: white;
     border-radius: 2px;
@@ -52,6 +53,7 @@ position: relative;
 
 .target-word{
     background-color: #f30b7b;
+    background-image: linear-gradient(140deg, white 0%, #f30b7b 50%);
     border: 1px solid #666;
     color: white;
 }
