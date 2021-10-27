@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import BulletL from '../../images/bulletL.png'
 import BulletR from '../../images/bulletR.png'
+import Clown from '../../images/clown1.png'
+import Nerd from '../../images/nerd.png'
+import Sunglasses from '../../images/sunglasses.png'
 
 export const GameContainer = styled.div`
 position: relative;
@@ -118,7 +121,7 @@ position: relative;
 
 
 .points-area-label{
-    padding: 0 1.5rem 0 .5rem;
+    padding: 0 .5rem 0 .5rem;
 
 }
 
@@ -130,11 +133,15 @@ position: relative;
 
 .points-area-cluster{
     display: flex;
+    max-width: 25%;
 }
 
 .points-area-emoji{
+    display: flex;
+    justify-content: space-around;
     img{
         max-width: 25px;
+        margin: .2rem;
     }
 
 }
@@ -261,6 +268,18 @@ const CountDownH2 = styled.h2`
     }
 `
 
-export const CountDownMessage = ({children})=>{
+export const CountDownMessage = ({ children }) => {
     return <CountDownH2>{children}</CountDownH2>
+}
+
+export const EmojiArea = (props) => {
+    return (
+        <div className="points-area-emoji">
+            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" /> :
+                props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" /> :
+                    props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
+            }
+        </div>
+    )
+
 }

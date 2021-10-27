@@ -1,10 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { GameContainer, DirectionBtns, CountDownMessage } from './gameComponents/GameComponents'
+import { GameContainer, DirectionBtns, CountDownMessage, EmojiArea } from './gameComponents/GameComponents'
 import EndButtons from '../components/EndButtons'
 import TrophySmall from '../images/trophySmall.png'
-import Clown from '../images/clown1.png'
-import Nerd from '../images/nerd.png'
-import Sunglasses from '../images/sunglasses.png'
 
 const noOfSquares = 50
 let grid
@@ -192,7 +189,7 @@ export default function Game(props) {
         }
         else {
             // lose a life
-            if(tileIsFalling){
+            if (tileIsFalling) {
                 lives--
                 cells[activeWordCurrentPos].classList.add('wrong')
                 setTimeout(() => {
@@ -202,6 +199,7 @@ export default function Game(props) {
                 }, 1000)
                 if (lives > 0) {
                     console.log(lives);
+                    countDownMessage = `${lives} lives remaining.`
                     startNextSet()
                 }
                 else {           // game over
@@ -210,7 +208,7 @@ export default function Game(props) {
                             setGameIsOver(true) //delay in bringing up end screen
                         }, 1500)
                     }
-            }
+                }
 
             }
 
@@ -220,6 +218,9 @@ export default function Game(props) {
 
         function startNextSet() {
             if (!gameIsOver) {
+                setTimeout(() => {
+                    countDownMessage = ""         
+                }, 500)
                 //clearwords
                 console.log('next set');
                 cells[activeWordCurrentPos].classList.remove('active')
@@ -273,7 +274,7 @@ export default function Game(props) {
 
 
     function controlWord(keyCode) {
-        tileISActive=true
+        tileISActive = true
         console.log('control');
         if (activeWordCurrentPos > noOfSquares - 11) {
             tileISActive = false
@@ -324,10 +325,9 @@ export default function Game(props) {
                     </div>
                     <div className="points-area-cluster">
                         <div className="points-area-emoji">
-                            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" /> :
-                                props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" /> :
-                                    props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
-                            }
+                            <EmojiArea sliderValue={props.sliderValue} />
+                            {lives > 1 ? <EmojiArea sliderValue={props.sliderValue} /> : null}
+                            {lives > 2 ? <EmojiArea sliderValue={props.sliderValue} /> : null}
                         </div>
 
                     </div>
