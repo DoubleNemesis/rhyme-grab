@@ -1,9 +1,4 @@
 import styled from "styled-components"
-import BulletL from '../../images/bulletL.png'
-import BulletR from '../../images/bulletR.png'
-import Clown from '../../images/clown1.png'
-import Nerd from '../../images/nerd.png'
-import Sunglasses from '../../images/sunglasses.png'
 
 export const GameContainer = styled.div`
 position: relative;
@@ -234,52 +229,3 @@ h2.end_win{
     }
 }
 `
-export const DirectionBtns = styled.button`
-    background-image: url(
-        ${({ id }) => id === 'left' ? BulletL : BulletR}
-        );
-    width: 20vw;
-    height: 10vw;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: center;
-    background-color: transparent;
-    border: 1px solid skyblue;
-    padding: 1rem;
-        :active{
-            filter: brightness(20%);
-        }
-
-        @media(min-width:700px){
-            width: 15vw;
-            height: 7.5vw;
-    }
-`
-const CountDownH2 = styled.h2`
-    font-size: 30px;
-    font-weight: 800;
-    font-family: 'Montserrat';
-    color: #f30b7b;
-    text-transform: uppercase;
-    text-align: center;
-
-    @media(min-width:700px){
-        font-size: 50px;
-    }
-`
-
-export const CountDownMessage = ({ children }) => {
-    return <CountDownH2>{children}</CountDownH2>
-}
-
-export const EmojiArea = (props) => {
-    return (
-        <div className="points-area-emoji">
-            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" /> :
-                props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" /> :
-                    props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
-            }
-        </div>
-    )
-
-}

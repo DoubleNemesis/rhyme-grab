@@ -17,8 +17,8 @@
 			"targetWords": ["slick", "mice", "march", "mild", "march"]
 		},
 		{
-			"wordsToPlay": ["nought", "thought"],
-			"targetWords": ["out", "neat", "thought", "through", "touch"]
+			"wordsToPlay": ["nought", "wart"],
+			"targetWords": ["out", "neat", "wart", "through", "touch"]
 		},
 		{
 			"wordsToPlay": ["said", "bread"],
@@ -57,7 +57,7 @@
 			"targetWords": ["flew", "boo", "know", "grow", "claw"]
 		},
 		{
-			"wordsToPlay": ["cat", "bat"],
+			"wordsToPlay": ["rat", "bat"],
 			"targetWords": ["bat", "fit", "nut", "sit", "lot"]
 		},
     	{
@@ -126,7 +126,7 @@
 		},
 		{
 			"wordsToPlay": ["fought", "port"],
-			"targetWords": ["out", "seat", "out", "lout", "port"]
+			"targetWords": ["fog", "seat", "out", "lout", "port"]
 		},
 		{
 			"wordsToPlay": ["naughty", "forty"],

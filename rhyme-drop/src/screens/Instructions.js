@@ -41,8 +41,8 @@ export default function Instructions(props) {
         <MainContainer>
             <H1Large>How to Play</H1Large>
                 <Ul>
-                    <li className="desktop-only">Use <img src={Larr} alt="controlling arrow" class="arrow-img" width="30px"/>  <img src={Rarr} alt="controlling arrow" className="arrow-img" width="30px"/> to guide the falling word.</li>
-                        <li className="mobile-only">Tap <img src={Lbul} alt="controlling arrow" class="arrow-img" width="30px"/>  <img src={Rbul} alt="controlling arrow" className="arrow-img" width="30px"/> to control the falling word.</li>
+                    <li className="desktop-only">Use <img src={Larr} alt="controlling arrow" className="arrow-img" width="30px"/>  <img src={Rarr} alt="controlling arrow" className="arrow-img" width="30px"/> to guide the falling word.</li>
+                        <li className="mobile-only">Tap <img src={Lbul} alt="controlling arrow" className="arrow-img" width="30px"/>  <img src={Rbul} alt="controlling arrow" className="arrow-img" width="30px"/> to control the falling word.</li>
                         <li>There is only one correct answer in each word set.</li>
                         <li>You score one point for every word you get right.</li>
                         <li>It gets harder and faster as the game goes on.</li>

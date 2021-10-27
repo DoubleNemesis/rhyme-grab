@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { GameContainer, DirectionBtns, CountDownMessage, EmojiArea } from './gameComponents/GameComponents'
+import { GameContainer,  } from './gameComponents/GameComponents'
+import { GameOverMessage } from './gameComponents/GameOverMessage'
+import { VictoryMessage } from './gameComponents/VictoryMessage'
+import { EmojiArea } from './gameComponents/EmojiArea'
+import { CountDownMessage } from './gameComponents/CountDownMessage'
+import { DirectionBtns } from './gameComponents/DirectionBtns'
 import EndButtons from '../components/EndButtons'
-import TrophySmall from '../images/trophySmall.png'
 
 const noOfSquares = 50
 let grid
@@ -35,32 +39,12 @@ export default function Game(props) {
     const [victoryPoints, setVictoryPoints] = useState(0)
     const [dataHasLoaded, setDataHasLoaded] = useState(false)
 
+    // props come in via Main from Settings
     useEffect(() => {
         speed = props.speedValue
         originalSpeed = props.speedValue
     }, [props.speedValue])
 
-    const GameOverMessage = () => {
-        return (
-            <>
-                <h2 className="end_headline">Game Over!</h2>
-                <p className="intro_text">You should have matched </p>
-                <div className="intro_word"> {wordsToPlay[0]}</div>
-                <div className="intro_text">with </div>
-                <div className="intro_word">{wordsToPlay[1]}</div>
-                <p className="intro_text">You got {points} points</p>
-            </>
-        )
-    }
-
-    const VictoryMessage = () => {
-        return (
-            <>
-                <h2><img src={TrophySmall} width="55px" alt="trophy emoji" /></h2>
-                <h2 className="end_win">You win with {victoryPoints} points!</h2>
-            </>
-        )
-    }
 
     const getKeyCode = useCallback((e) => {
         const keyCode = parseInt(document.getElementById(e.target.id).dataset.keyCode)
@@ -87,17 +71,14 @@ export default function Game(props) {
         }
     }, [getKeyCode])
 
-
-
     useEffect(() => {
         document.addEventListener('keydown', assignMoveKeys) //desktop only
         function assignMoveKeys(e) {
             const keyCode = e.keyCode
             controlWord(keyCode)
         }
+        return ()=>{document.removeEventListener('keydown', assignMoveKeys)}
     }, [])
-
-
 
     //populate the grid
     const populateGrid = useCallback(() => {
@@ -141,7 +122,6 @@ export default function Game(props) {
                 populateGrid()
             })
     }, [populateGrid])  // eslint-disable-line
-
 
     const reset = useCallback(() => {
         // if(tileIsFalling){
@@ -198,7 +178,6 @@ export default function Game(props) {
                     }
                 }, 1000)
                 if (lives > 0) {
-                    console.log(lives);
                     countDownMessage = `${lives} lives remaining.`
                     startNextSet()
                 }
@@ -222,7 +201,6 @@ export default function Game(props) {
                     countDownMessage = ""         
                 }, 500)
                 //clearwords
-                console.log('next set');
                 cells[activeWordCurrentPos].classList.remove('active')
                 //make tile show success and then remove it
                 cells[activeWordCurrentPos].classList.add('right')
@@ -271,11 +249,8 @@ export default function Game(props) {
         return () => { clearInterval(activeWordTimer) }
     }, [tileIsFalling, calculatePoints])
 
-
-
     function controlWord(keyCode) {
         tileISActive = true
-        console.log('control');
         if (activeWordCurrentPos > noOfSquares - 11) {
             tileISActive = false
         }
@@ -340,7 +315,7 @@ export default function Game(props) {
             <div className="grid"></div>
             <div className="count-down"><CountDownMessage>{countDownMessage}</CountDownMessage></div>
             {gameIsOver ?
-                <div className="end-message"> {victoryIsYours ? <VictoryMessage /> : <GameOverMessage />}
+                <div className="end-message"> {victoryIsYours ? <VictoryMessage victoryPoints={victoryPoints} /> : <GameOverMessage wordsToPlay={wordsToPlay} points={points}/>}
                     <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart} />
                 </div> : null}
 
