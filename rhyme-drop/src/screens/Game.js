@@ -4,6 +4,7 @@ import { GameOverMessage } from './gameComponents/GameOverMessage'
 import { VictoryMessage } from './gameComponents/VictoryMessage'
 import { EmojiArea } from './gameComponents/EmojiArea'
 import { CountDownMessage } from './gameComponents/CountDownMessage'
+import { LivesLeftMessage } from './gameComponents/LivesLeftMessage'
 import { DirectionBtns } from './gameComponents/DirectionBtns'
 import EndButtons from '../components/EndButtons'
 
@@ -24,6 +25,7 @@ let pointsDisplay
 let levelDisplay
 let directionBtns
 let countDownMessage = `Get Ready`
+let livesLeftMessage
 let speed = 750 // default value from settings.js "nerd"
 let originalSpeed = 750 // default value from settings.js
 const originalevel = 1
@@ -103,7 +105,8 @@ export default function Game(props) {
     }, [])
 
     const fetchData = useCallback(() => {
-        fetch('rhymedrop/data/words.json') //might have to change on deploy
+        // fetch('rhymedrop/data/words.json') //might have to change on deploy
+        fetch('./data/words.json') //might have to change on deploy
             .then(response => response.json())
             .then(data => {
                 function shuffle(array) { // randomise order of array
@@ -178,7 +181,7 @@ export default function Game(props) {
                     }
                 }, 1000)
                 if (lives > 0) {
-                    countDownMessage = `${lives} lives remaining.`
+                    livesLeftMessage = `${lives} lives remaining`
                     startNextSet()
                 }
                 else {           // game over
@@ -198,7 +201,7 @@ export default function Game(props) {
         function startNextSet() {
             if (!gameIsOver) {
                 setTimeout(() => {
-                    countDownMessage = ""         
+                    livesLeftMessage = ""         
                 }, 500)
                 //clearwords
                 cells[activeWordCurrentPos].classList.remove('active')
@@ -314,6 +317,7 @@ export default function Game(props) {
             </div>
             <div className="grid"></div>
             <div className="count-down"><CountDownMessage>{countDownMessage}</CountDownMessage></div>
+            <div className="count-down">{livesLeftMessage ? livesLeftMessage.length>1 ? <LivesLeftMessage>{livesLeftMessage}</LivesLeftMessage> : null : null}</div>
             {gameIsOver ?
                 <div className="end-message"> {victoryIsYours ? <VictoryMessage victoryPoints={victoryPoints} /> : <GameOverMessage wordsToPlay={wordsToPlay} points={points}/>}
                     <EndButtons setComponentToDisplay={props.setComponentToDisplay} doRestart={doRestart} />
