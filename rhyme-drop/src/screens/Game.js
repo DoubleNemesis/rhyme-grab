@@ -13,6 +13,7 @@ let cells = []
 let targetWords = []
 let setMax = 0
 let set = 0
+let randSet = []
 let wordsToPlay = []
 let activeWordCurrentPos = 0
 let tileISActive = false
@@ -22,9 +23,10 @@ let pointsDisplay
 let levelDisplay
 let directionBtns
 let countDownMessage = `Get Ready`
-let speed = 750 // default value from settings.js
+let speed = 750 // default value from settings.js "nerd"
 let originalSpeed = 750 // default value from settings.js
 const originalevel = 1
+let lives = 3
 
 
 export default function Game(props) {
@@ -34,6 +36,7 @@ export default function Game(props) {
     const [victoryIsYours, setVictoryIsYours] = useState(false)
     const [restart, setRestart] = useState(false)
     const [victoryPoints, setVictoryPoints] = useState(0)
+    const [dataHasLoaded, setDataHasLoaded] = useState(false)
 
     useEffect(() => {
         speed = props.speedValue
@@ -122,18 +125,25 @@ export default function Game(props) {
     }, [])
 
     const fetchData = useCallback(() => {
-        fetch('./data/words.json')
+        fetch('rhymedrop/data/words.json') //might have to change on deploy
             .then(response => response.json())
             .then(data => {
-                wordsToPlay = data.words[set].wordsToPlay
-                function shuffle(array) { // put target words in random order
+                function shuffle(array) { // randomise order of array
                     return array.sort(() => Math.random() - 0.5);
                 }
-                targetWords = shuffle(data.words[set].targetWords)
                 setMax = data.words.length
+                if (!dataHasLoaded) { //only happens once per game
+                    for (let i = 0; i < setMax; i++) {
+                        randSet.push(i)
+                    }
+                    randSet = shuffle(randSet)
+                }
+                wordsToPlay = data.words[randSet[set]].wordsToPlay
+                targetWords = shuffle(data.words[randSet[set]].targetWords)
+                setDataHasLoaded(true)
                 populateGrid()
             })
-    }, [populateGrid])
+    }, [populateGrid])  // eslint-disable-line
 
 
     const reset = useCallback(() => {
@@ -142,6 +152,7 @@ export default function Game(props) {
         cells[activeWordCurrentPos].innerText = ''
         set = 0
         points = 0
+        lives = 3
         level = originalevel
         levelDisplay.innerText = level
         speed = originalSpeed
@@ -180,18 +191,31 @@ export default function Game(props) {
             startNextSet()
         }
         else {
-            // game over
-            if (tileIsFalling) {
+            // lose a life
+            if(tileIsFalling){
+                lives--
+                cells[activeWordCurrentPos].classList.add('wrong')
                 setTimeout(() => {
-                    setGameIsOver(true) //delay in bringing up end screen
-                }, 1500)
-            }
-            cells[activeWordCurrentPos].classList.add('wrong')
-            setTimeout(() => {
-                if (document.getElementsByClassName('wrong')[0]) {
-                    document.getElementsByClassName('wrong')[0].classList.remove('wrong')
+                    if (document.getElementsByClassName('wrong')[0]) {
+                        document.getElementsByClassName('wrong')[0].classList.remove('wrong')
+                    }
+                }, 1000)
+                if (lives > 0) {
+                    console.log(lives);
+                    startNextSet()
                 }
-            }, 1000)
+                else {           // game over
+                    if (tileIsFalling) {
+                        setTimeout(() => {
+                            setGameIsOver(true) //delay in bringing up end screen
+                        }, 1500)
+                    }
+            }
+
+            }
+
+
+
         }
 
         function startNextSet() {
@@ -249,10 +273,10 @@ export default function Game(props) {
 
 
     function controlWord(keyCode) {
+        tileISActive=true
+        console.log('control');
         if (activeWordCurrentPos > noOfSquares - 11) {
-            // setTimeout(() => {
             tileISActive = false
-            // }, 10)
         }
 
         switch (keyCode) {
@@ -282,6 +306,7 @@ export default function Game(props) {
         setRestart(true)
         setGameIsOver(false)
         createGrid()
+        setDataHasLoaded(false)
         fetchData()
     }
 
@@ -299,9 +324,9 @@ export default function Game(props) {
                     </div>
                     <div className="points-area-cluster">
                         <div className="points-area-emoji">
-                            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" />:
-                            props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" />:
-                            props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
+                            {props.sliderValue === 1 ? <img src={Clown} alt="clown emoji" /> :
+                                props.sliderValue === 2 ? <img src={Nerd} alt="nerd emoji" /> :
+                                    props.sliderValue === 3 ? <img src={Sunglasses} alt="sunglasses emoji" /> : null
                             }
                         </div>
 
